@@ -55,6 +55,25 @@ Para o desenvolvimento da API, optou-se por Python com o framework Flask. Python
 
 Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através de seus endpoints públicos, assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos uma abordagem mista: a biblioteca Python Faker será responsável pela geração de dados mais básicos como nomes, enquanto a [Gemini Developer API](https://ai.google.dev/gemini-api/docs) complementará com elementos criativos como biografias personalizadas. Quanto às conexões sociais e às interações serão estabelecidas manualmente através de scripts Python.
 
+```mermaid
+flowchart TB
+    A[Cliente] -->|Requisição| B[API Flask]
+    B -->|Resposta| A
+
+    B -->|Modifica| C[MongoDB]
+    C -->|Retorna dados| B
+    
+    B -->|Modifica| D[Neo4j]
+    D -->|Retorna dados| B
+
+    E[Spotify API] -->|Fornece dados| F[Script Python]
+
+    G[Gemini API] -->|Fornece dados| F[Script Python]
+
+    F[Script Python] -->|Insere dados| C
+    F[Script Python] -->|Insere dados| D
+```
+
 ## Modelagem dos Dados
 
 ### MongoDB
@@ -82,5 +101,3 @@ Onde serão armazenados os dados dos usuários, artistas e lançamentos, contend
 - (Usuário) -[Avaliou {Nota}]→ (Lançamento)
 - (Usuário) ←[É Amigo de]→ (Usuário)
 
-## Fluxograma da aplicação
-<img src="https://github.com/user-attachments/assets/546bc130-c806-4ea0-a9e8-2c6ee39848bb" width="400"/>
