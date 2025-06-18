@@ -12,8 +12,6 @@ O projeto consiste em uma API web de catálogo musical com funcionalidades de re
 
 O sistema gera recomendações inteligentes: sugere novos artistas com base nas preferências do usuário, recomenda lançamentos considerando avaliações positivas de amigos e indica potenciais novas amizades por afinidade musical. Assim, a plataforma combina acesso a conteúdo musical, interação social e descobertas personalizadas em uma única experiência.
 
-Como fonte dos dados, será utilizada a API do Spotify, que fornece informações atualizadas sobre artistas, lançamentos e faixas. O projeto utilizará MongoDB para armazenar dados de usuários, artistas e lançamentos, enquanto o Neo4j será empregado para modelar as relações entre esses elementos, permitindo consultas eficientes e recomendações personalizadas.
-
 ## Funcionalidades do Sistema
 
 ### Catálogo Musical
