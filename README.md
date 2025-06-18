@@ -43,7 +43,7 @@ Como fonte dos dados, será utilizada a API do Spotify, que fornece informaçõe
 
 ### MongoDB
 
-
+A escolha do MongoDB, um banco de dados orientado a documentos, justifica-se pela natureza semi estruturada dos dados musicais. Artistas, lançamentos e usuários possuem atributos variáveis que se adaptam naturalmente ao modelo de documentos flexíveis. Essa característica permite armazenar entidades com hierarquias aninhadas, como um lançamento contendo uma quantidade variável de faixas, sem exigir esquemas rígidos, facilitando futuras evoluções do modelo de dados. A escalabilidade horizontal do MongoDB também é crucial para lidar com o crescimento esperado do catálogo e base de usuários.
 
 ### Neo4j
 
