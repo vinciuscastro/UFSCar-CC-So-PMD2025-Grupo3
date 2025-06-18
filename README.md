@@ -51,7 +51,7 @@ O Neo4j, um banco de dados orientado a grafos, foi selecionado para gerenciar as
 
 ### Python
 
-
+Para o desenvolvimento da API, optou-se por Python com o framework Flask. Python foi escolhido pelo vasto ecossistema de bibliotecas, facilidade de desenvolvimento e natureza dinâmica. O Flask oferece leveza e flexibilidade para construir endpoints RESTful de forma simples e eficiente. Além disso, serão usados as bibliotecas PyMongo e Neo4j Python Driver para comunicação com os bancos de dados.
 
 ### Spotify Web API
 
