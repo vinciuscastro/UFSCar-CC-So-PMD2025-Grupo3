@@ -80,9 +80,9 @@ flowchart TB
 
 Onde serão armazenados os dados dos usuários, artistas e lançamentos, contendo as seguintes coleções:
 
-- **Usuário:** username (único), nome (opcional), senha, quantidade de amigos, quantidade de artistas seguidos, quantidade de avaliações feitas.
+- **Usuário:** username (único), nome (opcional), senha, biografia (opcional), quantidade de amigos, quantidade de artistas seguidos, quantidade de avaliações feitas.
 - **Artista:** ID, nome, gêneros, quantidade de seguidores, nível de popularidade, lista de lançamentos.
-- **Lançamento:** ID, nome, data de lançamento, quantidade de avaliações, lista de faixas (nome e duração).
+- **Lançamento:** ID, nome, tipo de lançamento, data de lançamento, quantidade de avaliações, lista de faixas (nome e duração).
 
 ### Neo4j
 
