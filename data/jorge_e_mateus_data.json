@@ -1,0 +1,2559 @@
+{
+    "artist": {
+        "id": "1elUiq4X7pxej6FRlrEzjM",
+        "name": "Jorge & Mateus",
+        "genres": [
+            "sertanejo",
+            "sertanejo universitário",
+            "arrocha",
+            "agronejo"
+        ],
+        "followers": 22746266,
+        "popularity": 83
+    },
+    "albums": [
+        {
+            "id": "5Cs1VjhgG8FmA5rv5iXe3r",
+            "name": "Check-In (Ao Vivo)",
+            "release_date": "2024-11-07",
+            "tracks": [
+                {
+                    "id": "6C5EczmaeIUmf1pTYux9f1",
+                    "name": "Tem Amor, Tem Volta - Ao Vivo",
+                    "duration_ms": 142755,
+                    "preview_url": null
+                },
+                {
+                    "id": "2gfn28JSINCJGLrUimmu0l",
+                    "name": "Cantada Boba - Ao Vivo",
+                    "duration_ms": 183249,
+                    "preview_url": null
+                },
+                {
+                    "id": "3Kmd4BaHcl3TIQ3PranxlC",
+                    "name": "Louco Pra Ficar - Ao Vivo",
+                    "duration_ms": 166512,
+                    "preview_url": null
+                },
+                {
+                    "id": "58lj9vX7tIP0nuIBZLYzlr",
+                    "name": "Abismo - Ao Vivo",
+                    "duration_ms": 198869,
+                    "preview_url": null
+                },
+                {
+                    "id": "2t878JZCl8Ftd2mVzzakYc",
+                    "name": "Haverá Sinais - Ao Vivo",
+                    "duration_ms": 191365,
+                    "preview_url": null
+                },
+                {
+                    "id": "2xTM0m9HD3gIqNSutA0LNJ",
+                    "name": "Xonei",
+                    "duration_ms": 154555,
+                    "preview_url": null
+                },
+                {
+                    "id": "3ZmNdAggku7RtRowCHrXVH",
+                    "name": "Gripe - Ao Vivo",
+                    "duration_ms": 165115,
+                    "preview_url": null
+                },
+                {
+                    "id": "463P352ELCj4uG3RBIRnOQ",
+                    "name": "Conflito de Interesse - Ao Vivo",
+                    "duration_ms": 180208,
+                    "preview_url": null
+                },
+                {
+                    "id": "2Ye8e1jWx9YVh5zTckKvv0",
+                    "name": "Feliz, Infelizmente",
+                    "duration_ms": 230511,
+                    "preview_url": null
+                },
+                {
+                    "id": "6Ya138IQhiNtWXwhlNRCF9",
+                    "name": "Na Hora Que Você Chamar",
+                    "duration_ms": 223125,
+                    "preview_url": null
+                },
+                {
+                    "id": "5BvXf7bSxzCEvu8NWspTyI",
+                    "name": "Dói",
+                    "duration_ms": 183232,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3KOePCX9vdj3OrAC2ruEFk",
+            "name": "É Simples Assim (Ao Vivo)",
+            "release_date": "2022-07-28",
+            "tracks": [
+                {
+                    "id": "4NNZZXHgn9F3cCgC1YGmLl",
+                    "name": "Todo Seu - Ao Vivo",
+                    "duration_ms": 171712,
+                    "preview_url": null
+                },
+                {
+                    "id": "5pNkAOWmHMAeEzenkvBXty",
+                    "name": "Então Valeu - Ao Vivo",
+                    "duration_ms": 189510,
+                    "preview_url": null
+                },
+                {
+                    "id": "3zNSaDX6hGqa1lx29P3uES",
+                    "name": "Cobertor / Ainda Bem - Ao Vivo",
+                    "duration_ms": 270396,
+                    "preview_url": null
+                },
+                {
+                    "id": "3gCWngngUs1uojw33vrE8K",
+                    "name": "5 Regras - Ao Vivo",
+                    "duration_ms": 161469,
+                    "preview_url": null
+                },
+                {
+                    "id": "1PVt8LyQGcDhELaVgEXHYk",
+                    "name": "Penumbra - Ao Vivo",
+                    "duration_ms": 221978,
+                    "preview_url": null
+                },
+                {
+                    "id": "6e00L1gCpo2G2mXIeX5cDT",
+                    "name": "Água de Oceano / Onde Nasce o Sol - Ao Vivo",
+                    "duration_ms": 210750,
+                    "preview_url": null
+                },
+                {
+                    "id": "234grmyKqaFMqtCwHHso4u",
+                    "name": "Você Vai Sentir Saudade - Ao Vivo",
+                    "duration_ms": 202692,
+                    "preview_url": null
+                },
+                {
+                    "id": "1lZmzXo47JBZycDksFRxdw",
+                    "name": "Anjo de Amor / Dois - Ao Vivo",
+                    "duration_ms": 206163,
+                    "preview_url": null
+                },
+                {
+                    "id": "05IsQFK3asaTMCz8jdAUQX",
+                    "name": "Canto a Pedra - Ao Vivo",
+                    "duration_ms": 176412,
+                    "preview_url": null
+                },
+                {
+                    "id": "56ObOSPDjjluyYxakJ7afq",
+                    "name": "Frente a Frente / Desejo de Amar - Ao Vivo",
+                    "duration_ms": 222866,
+                    "preview_url": null
+                },
+                {
+                    "id": "23jXzDSRvPWNXGwZ4rluOD",
+                    "name": "Só Você e Eu - Ao Vivo",
+                    "duration_ms": 198130,
+                    "preview_url": null
+                },
+                {
+                    "id": "10WMkS0HU1u8dslezZCAOP",
+                    "name": "O Que É Que Eu Faço / Pior É Te Perder / Tá Escrito Em Meu Olhar - Ao Vivo",
+                    "duration_ms": 304883,
+                    "preview_url": null
+                },
+                {
+                    "id": "0EcdSsGohpMXxW5IYAnEu0",
+                    "name": "Hábito - Ao Vivo",
+                    "duration_ms": 200411,
+                    "preview_url": null
+                },
+                {
+                    "id": "19nrc7W2S5tZvQhXD5s6VH",
+                    "name": "Diz Pra Ela / a Solidão É uma Ressaca - Ao Vivo",
+                    "duration_ms": 201987,
+                    "preview_url": null
+                },
+                {
+                    "id": "5cUmdRWGJmqond70Yrzouq",
+                    "name": "A Mais Louca Paixão - Ao Vivo",
+                    "duration_ms": 204341,
+                    "preview_url": null
+                },
+                {
+                    "id": "3wYYsYMN4SVLqR1NnGwAYR",
+                    "name": "Quem É / Hello - Ao Vivo",
+                    "duration_ms": 200813,
+                    "preview_url": null
+                },
+                {
+                    "id": "0M8fiZtJlfm4v9aadOtiZM",
+                    "name": "Faz Assim - Ao Vivo",
+                    "duration_ms": 212933,
+                    "preview_url": null
+                },
+                {
+                    "id": "4XDLyew67cfJSkMnUYDUAi",
+                    "name": "I Don't Wanna Dance / Colo de Menina / Rindo À Toa - Ao Vivo",
+                    "duration_ms": 351850,
+                    "preview_url": null
+                },
+                {
+                    "id": "2koTwviigH2feYTfbXOkBq",
+                    "name": "Eu e Você Sempre - Ao Vivo",
+                    "duration_ms": 219328,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "57h6WHDjwNGIs5NMeKYEoL",
+            "name": "Tudo Em Paz",
+            "release_date": "2021-04-22",
+            "tracks": [
+                {
+                    "id": "0LjcDhacvjZN5QyCqM2UTy",
+                    "name": "Tudo Em Paz",
+                    "duration_ms": 213297,
+                    "preview_url": null
+                },
+                {
+                    "id": "6HV630GY0GT3RN2efFRmbP",
+                    "name": "Troca",
+                    "duration_ms": 171263,
+                    "preview_url": null
+                },
+                {
+                    "id": "6m84TzSTM5nbwZxIxkYHz6",
+                    "name": "Namorando Com Saudade",
+                    "duration_ms": 174081,
+                    "preview_url": null
+                },
+                {
+                    "id": "4iavXH4dDUMA8yAabnUhSI",
+                    "name": "Me Ame Mais",
+                    "duration_ms": 229857,
+                    "preview_url": null
+                },
+                {
+                    "id": "49jRc9uNmUiJmyrd7bc7rV",
+                    "name": "Vogais e Consoantes",
+                    "duration_ms": 216554,
+                    "preview_url": null
+                },
+                {
+                    "id": "4KMrGlqZk040LgVTshqIv8",
+                    "name": "O Sol Tá Dando Oi",
+                    "duration_ms": 155373,
+                    "preview_url": null
+                },
+                {
+                    "id": "4BCk2QOQqu9cGYI9GWLIOz",
+                    "name": "Desisto",
+                    "duration_ms": 222733,
+                    "preview_url": null
+                },
+                {
+                    "id": "4bRG4HlS0X6hdJtwTHoCkv",
+                    "name": "Por Que Parou Na Porta?",
+                    "duration_ms": 148644,
+                    "preview_url": null
+                },
+                {
+                    "id": "5tzUSeVVUVfDpl2MBnJlFb",
+                    "name": "Do Jeito Que Tá Não Dá",
+                    "duration_ms": 181845,
+                    "preview_url": null
+                },
+                {
+                    "id": "17UfXrL7Run3GyZJW4uRjC",
+                    "name": "Paradigmas",
+                    "duration_ms": 157354,
+                    "preview_url": null
+                },
+                {
+                    "id": "7HlSaDhYypX8sCkXEwP2vn",
+                    "name": "Hit do Ano",
+                    "duration_ms": 154848,
+                    "preview_url": null
+                },
+                {
+                    "id": "000RW47rhEkSqjgTrZx7YX",
+                    "name": "Lance Individual",
+                    "duration_ms": 164458,
+                    "preview_url": null
+                },
+                {
+                    "id": "6Siy8yXs0PtUO6yOPW1kb6",
+                    "name": "Treta",
+                    "duration_ms": 221354,
+                    "preview_url": null
+                },
+                {
+                    "id": "7cMztRE7oWfQSRN569IY7K",
+                    "name": "Namora Eu Aí",
+                    "duration_ms": 156337,
+                    "preview_url": null
+                },
+                {
+                    "id": "3wNBJf7t6Qs2nCs4KlpKZH",
+                    "name": "Tem Que Sorrir",
+                    "duration_ms": 294720,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7uhBra7AiFJm6Nd6YGpqGp",
+            "name": "Terra Sem Cep (Ao Vivo)",
+            "release_date": "2018-02-23",
+            "tracks": [
+                {
+                    "id": "2hsTAVEFj49m4EEyxKJpO3",
+                    "name": "Olhares Sinceros - Ao Vivo",
+                    "duration_ms": 182456,
+                    "preview_url": null
+                },
+                {
+                    "id": "0WvRK6cO0KhiHDXDl1AGok",
+                    "name": "Anjo Moderno - Ao Vivo",
+                    "duration_ms": 191775,
+                    "preview_url": null
+                },
+                {
+                    "id": "74n5d5M21JnC4WJ6gdkggK",
+                    "name": "Propaganda - Ao Vivo",
+                    "duration_ms": 141934,
+                    "preview_url": null
+                },
+                {
+                    "id": "5qjMyKkmosPBws5cImS9Zz",
+                    "name": "Trincadinho - Ao Vivo",
+                    "duration_ms": 140442,
+                    "preview_url": null
+                },
+                {
+                    "id": "2bFuWE2oCgdhW5A20V9ILC",
+                    "name": "Vale por Dez - Ao Vivo",
+                    "duration_ms": 174188,
+                    "preview_url": null
+                },
+                {
+                    "id": "6bbKbaqpPRQWvCrqlAhypu",
+                    "name": "A Mil por Hora - Ao Vivo",
+                    "duration_ms": 193899,
+                    "preview_url": null
+                },
+                {
+                    "id": "7nxAHrhpQ31kZtcbzaNMwl",
+                    "name": "Bobinha - Ao Vivo",
+                    "duration_ms": 206144,
+                    "preview_url": null
+                },
+                {
+                    "id": "4jCK9FJrxb8eB5vJpUsrLb",
+                    "name": "Distante do Perfeito - Ao Vivo",
+                    "duration_ms": 205783,
+                    "preview_url": null
+                },
+                {
+                    "id": "7JY7Cx7e3gcJlACR7N7bM6",
+                    "name": "Amor Turista - Ao Vivo",
+                    "duration_ms": 154047,
+                    "preview_url": null
+                },
+                {
+                    "id": "0J1nrpMkNrL10jEL9QhItw",
+                    "name": "Menina Maluquinha - Ao Vivo",
+                    "duration_ms": 149242,
+                    "preview_url": null
+                },
+                {
+                    "id": "0wifP1osuKJrS3bjazE2yq",
+                    "name": "Inesperado - Ao Vivo",
+                    "duration_ms": 146751,
+                    "preview_url": null
+                },
+                {
+                    "id": "58Kv71AxpWF6ab0Z76jQId",
+                    "name": "Coração Calejado - Ao Vivo",
+                    "duration_ms": 166517,
+                    "preview_url": null
+                },
+                {
+                    "id": "43nkDm3QmUcioZTbNWzwMK",
+                    "name": "Três Pontinhos - Ao Vivo",
+                    "duration_ms": 150861,
+                    "preview_url": null
+                },
+                {
+                    "id": "2U94QDSo9N4e1iXrjo7KAB",
+                    "name": "Terra Sem CEP - Ao Vivo",
+                    "duration_ms": 177380,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0wiTSo8xXBIvvkhZNJFWCm",
+            "name": "10 Anos (Ao Vivo | Deluxe)",
+            "release_date": "2016-11-11",
+            "tracks": [
+                {
+                    "id": "57xzjzfQn7loBS0ngMYEe4",
+                    "name": "Os Anjos Cantam - Ao Vivo",
+                    "duration_ms": 198033,
+                    "preview_url": null
+                },
+                {
+                    "id": "49YDI5UEO5qwICES8Y8uMi",
+                    "name": "Pot-Pourri: Tem Nada a Ver / Te Cuida Coração - Ao Vivo",
+                    "duration_ms": 191036,
+                    "preview_url": null
+                },
+                {
+                    "id": "2VCBznqS9pHibDerZgZNoO",
+                    "name": "Seu Astral - Ao Vivo",
+                    "duration_ms": 198749,
+                    "preview_url": null
+                },
+                {
+                    "id": "0XgIrW4bDmRqO5bzA3UeHS",
+                    "name": "Espelho - Ao Vivo",
+                    "duration_ms": 202186,
+                    "preview_url": null
+                },
+                {
+                    "id": "4KXUYDCjfKLs4RyzcwOHrk",
+                    "name": "O Que É Que Tem - Ao Vivo",
+                    "duration_ms": 221759,
+                    "preview_url": null
+                },
+                {
+                    "id": "3HrvG1d9OZpg6eV4A1dcSk",
+                    "name": "De Tanto Te Querer - Ao Vivo",
+                    "duration_ms": 179562,
+                    "preview_url": null
+                },
+                {
+                    "id": "2VBTHwf7YzlyENFnrgIlD5",
+                    "name": "Amo Noite e Dia - Ao Vivo",
+                    "duration_ms": 223846,
+                    "preview_url": null
+                },
+                {
+                    "id": "2XtMDVQz1UZXoyVNpqOGrp",
+                    "name": "Maneira Errada - Ao Vivo",
+                    "duration_ms": 171606,
+                    "preview_url": null
+                },
+                {
+                    "id": "7uXbenxrpLtmMXxP198nlz",
+                    "name": "Pot-Pourri: Pode Chorar / Voa Beija-Flor / Flor - Ao Vivo",
+                    "duration_ms": 414047,
+                    "preview_url": null
+                },
+                {
+                    "id": "6MbUPUvlRFfjrjfnqEFvha",
+                    "name": "Te Amo Tanto Que Nem Sei - Ao Vivo",
+                    "duration_ms": 179532,
+                    "preview_url": null
+                },
+                {
+                    "id": "6lqtnZCjmzqjkAsCOtDLB3",
+                    "name": "O Mundo É Tão Pequeno - Ao Vivo",
+                    "duration_ms": 162338,
+                    "preview_url": null
+                },
+                {
+                    "id": "3RLoIn3LB72B3dNiKWjc9G",
+                    "name": "Onde Haja Sol - Ao Vivo",
+                    "duration_ms": 228207,
+                    "preview_url": null
+                },
+                {
+                    "id": "7nz0QqBuuKh7HegyViVSAC",
+                    "name": "Por Quê? - Ao Vivo",
+                    "duration_ms": 172480,
+                    "preview_url": null
+                },
+                {
+                    "id": "1XEktdX2mXjA1OTfUJSmdA",
+                    "name": "Idas e Voltas - Ao Vivo",
+                    "duration_ms": 188258,
+                    "preview_url": null
+                },
+                {
+                    "id": "72sSTSSSrf1MARGWqLmyvg",
+                    "name": "Se Eu Pedir Cê Volta - Ao Vivo",
+                    "duration_ms": 174544,
+                    "preview_url": null
+                },
+                {
+                    "id": "6CNTRrxisR3RpUPx7nYXdy",
+                    "name": "Se Disser Bye Bye - Ao Vivo",
+                    "duration_ms": 174766,
+                    "preview_url": null
+                },
+                {
+                    "id": "3nyOIs20XEpHbaCa12Rpvx",
+                    "name": "Mil Anos - Ao Vivo",
+                    "duration_ms": 189748,
+                    "preview_url": null
+                },
+                {
+                    "id": "0kR6yjhA8eqEvhorNzJV6O",
+                    "name": "Calma - Ao Vivo",
+                    "duration_ms": 192271,
+                    "preview_url": null
+                },
+                {
+                    "id": "0qGqHlaGNFNhxyxyoZs6eI",
+                    "name": "O Que Eu Tava Falando - Ao Vivo",
+                    "duration_ms": 218355,
+                    "preview_url": null
+                },
+                {
+                    "id": "24pu81tLFhCMJlPT3T1fA3",
+                    "name": "Enquanto Houver Razões - Ao Vivo",
+                    "duration_ms": 195695,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4TcZpyEt3wrOtMdK0gknMz",
+            "name": "Como. Sempre Feito. Nunca (Ao Vivo)",
+            "release_date": "2016-02-19",
+            "tracks": [
+                {
+                    "id": "1WCn5QBp0Kl9uHrR0J02GS",
+                    "name": "Vou Voando - Ao Vivo",
+                    "duration_ms": 236501,
+                    "preview_url": null
+                },
+                {
+                    "id": "1xFgXCY8Zvo76gHg4RgUaU",
+                    "name": "Sosseguei - Ao Vivo",
+                    "duration_ms": 195369,
+                    "preview_url": null
+                },
+                {
+                    "id": "2KGv51jgAz8OTjNPyRryfq",
+                    "name": "Pra Sempre Com Você - Ao Vivo",
+                    "duration_ms": 207520,
+                    "preview_url": null
+                },
+                {
+                    "id": "6D4frKlelg5IBsBjGbpNHq",
+                    "name": "Dias de Sol - Ao Vivo",
+                    "duration_ms": 186462,
+                    "preview_url": null
+                },
+                {
+                    "id": "3SWIpewrd1V1iw09lim55f",
+                    "name": "Antônimos - Ao Vivo",
+                    "duration_ms": 169042,
+                    "preview_url": null
+                },
+                {
+                    "id": "2GfxgssRHvY1azHtaRqKoK",
+                    "name": "Paredes - Ao Vivo",
+                    "duration_ms": 184032,
+                    "preview_url": null
+                },
+                {
+                    "id": "7CsljtTpvJgqrmlUJOfbF1",
+                    "name": "Preocupa Não - Ao Vivo",
+                    "duration_ms": 188426,
+                    "preview_url": null
+                },
+                {
+                    "id": "70SNcmBfaySraULT9lwlKP",
+                    "name": "Te Amo Com a Voz Rouca - Ao Vivo",
+                    "duration_ms": 206304,
+                    "preview_url": null
+                },
+                {
+                    "id": "3dRBzTOu9polrH9U6Vh2zw",
+                    "name": "Ou Some Ou Soma - Ao Vivo",
+                    "duration_ms": 195954,
+                    "preview_url": null
+                },
+                {
+                    "id": "2InJDvDcA4RXEeA9njdibl",
+                    "name": "Louca de Saudade - Ao Vivo",
+                    "duration_ms": 195573,
+                    "preview_url": null
+                },
+                {
+                    "id": "6OMa92rG6yo9bqB3mqvczM",
+                    "name": "Novo Amigo - Ao Vivo",
+                    "duration_ms": 154827,
+                    "preview_url": null
+                },
+                {
+                    "id": "7tZ2ul7cQBdw7gePR7GhRB",
+                    "name": "Cenário Ideal - Ao Vivo",
+                    "duration_ms": 247893,
+                    "preview_url": null
+                },
+                {
+                    "id": "5FdswcTYAQ4O6S9VO8vkAf",
+                    "name": "O Amor Não É Paixão - Ao Vivo",
+                    "duration_ms": 222826,
+                    "preview_url": null
+                },
+                {
+                    "id": "4xfANTulrpKbBeoE2A5Zll",
+                    "name": "Problema - Ao Vivo",
+                    "duration_ms": 172985,
+                    "preview_url": null
+                },
+                {
+                    "id": "0TVb5bgJ5Js4ShRaN6SizP",
+                    "name": "Me Acalma - Ao Vivo",
+                    "duration_ms": 294944,
+                    "preview_url": null
+                },
+                {
+                    "id": "02uRCMxwVsADO15u8DSIFR",
+                    "name": "Campeão de Audiência - Ao Vivo",
+                    "duration_ms": 239104,
+                    "preview_url": null
+                },
+                {
+                    "id": "0c26AuUOwLnGKuCWKWhIGm",
+                    "name": "Depois do Jantar - Ao Vivo",
+                    "duration_ms": 195178,
+                    "preview_url": null
+                },
+                {
+                    "id": "3AdoxEuoNFyfHwLERsXbVN",
+                    "name": "Seu Amor Me Tem - Ao Vivo",
+                    "duration_ms": 213133,
+                    "preview_url": null
+                },
+                {
+                    "id": "6VpTYyjXt3L13k5YEL15KV",
+                    "name": "Sorte Pra Nós - Ao Vivo",
+                    "duration_ms": 215957,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0spzPH10djjrUshMB2z9jt",
+            "name": "Os Anjos Cantam",
+            "release_date": "2015-03-23",
+            "tracks": [
+                {
+                    "id": "1FPHla2ECXscKdPqUVXmJg",
+                    "name": "Intro",
+                    "duration_ms": 52200,
+                    "preview_url": null
+                },
+                {
+                    "id": "5OnLTl50NWpwZbY6OdAw2B",
+                    "name": "31.12",
+                    "duration_ms": 263653,
+                    "preview_url": null
+                },
+                {
+                    "id": "6ccKu0LwJzOhLAxBwP2PTk",
+                    "name": "Os Anjos Cantam",
+                    "duration_ms": 197600,
+                    "preview_url": null
+                },
+                {
+                    "id": "2NnSYdNhqye00il4nRB4tj",
+                    "name": "Nocaute",
+                    "duration_ms": 167240,
+                    "preview_url": null
+                },
+                {
+                    "id": "6eroFpjEepjMj9di2ankqD",
+                    "name": "A Hora, O Dia e o Lugar",
+                    "duration_ms": 180906,
+                    "preview_url": null
+                },
+                {
+                    "id": "1lfFGBUA5NhwqzlhG0raSk",
+                    "name": "Se Disser Bye Bye",
+                    "duration_ms": 169693,
+                    "preview_url": null
+                },
+                {
+                    "id": "4Us7xZUc4FLIrhiVKhS8zp",
+                    "name": "Como Não Me Apaixonar",
+                    "duration_ms": 240000,
+                    "preview_url": null
+                },
+                {
+                    "id": "1SccxISVatUDCctFGAMA5D",
+                    "name": "Idas e Voltas",
+                    "duration_ms": 238760,
+                    "preview_url": null
+                },
+                {
+                    "id": "2655xYZ347fG2N6OjkoMQ8",
+                    "name": "Logo Eu",
+                    "duration_ms": 155720,
+                    "preview_url": null
+                },
+                {
+                    "id": "5dVOLNVIIj9czz7k3czuWS",
+                    "name": "Coisas de Quem Ama",
+                    "duration_ms": 253800,
+                    "preview_url": null
+                },
+                {
+                    "id": "20mkbVemhSS5Hboi56b4je",
+                    "name": "Não Tem Comparação",
+                    "duration_ms": 188400,
+                    "preview_url": null
+                },
+                {
+                    "id": "7evftBiobEwWOwfxiTnnKc",
+                    "name": "Calma",
+                    "duration_ms": 187453,
+                    "preview_url": null
+                },
+                {
+                    "id": "0zXf7I1iykVmIpPrNdD2vI",
+                    "name": "O Que Eu Tava Falando",
+                    "duration_ms": 235120,
+                    "preview_url": null
+                },
+                {
+                    "id": "1mg2pGxPYSsIPRHmuPuKiU",
+                    "name": "Fica Só um Pouco Mais",
+                    "duration_ms": 189800,
+                    "preview_url": null
+                },
+                {
+                    "id": "0gwSS8KUbLdACrkX6eFxxt",
+                    "name": "Maneira Errada",
+                    "duration_ms": 170373,
+                    "preview_url": null
+                },
+                {
+                    "id": "3jOZEDQ90JR4uHCkTt0ggq",
+                    "name": "Vai Entender",
+                    "duration_ms": 167320,
+                    "preview_url": null
+                },
+                {
+                    "id": "4CWRKwYu8WTrEBng1JsiIO",
+                    "name": "É Amor",
+                    "duration_ms": 172173,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6JxAtvSXy4KDs7EaU9YjLz",
+            "name": "Live In London - At The Royal Albert Hall (Ao Vivo | Músicas Extras)",
+            "release_date": "2013-12-16",
+            "tracks": [
+                {
+                    "id": "2Pt1o1iaK6JPR9bcWrC0JB",
+                    "name": "Amor Covarde - Ao Vivo",
+                    "duration_ms": 171316,
+                    "preview_url": null
+                },
+                {
+                    "id": "3EfAB2OcBfAhavkbJ5ZzWI",
+                    "name": "Pot-Pourri: Voa Beija-Flor / Pode Chorar - Ao Vivo",
+                    "duration_ms": 213882,
+                    "preview_url": null
+                },
+                {
+                    "id": "38MzKTFGx5n7uhFaqxpyGN",
+                    "name": "Vestígios - Ao Vivo",
+                    "duration_ms": 197210,
+                    "preview_url": null
+                },
+                {
+                    "id": "0ItsDU6B9aY5KZKTZeAIad",
+                    "name": "Invasões - Ao Vivo",
+                    "duration_ms": 203836,
+                    "preview_url": null
+                },
+                {
+                    "id": "1gEVKiv0ueTjrtERvyzJZu",
+                    "name": "Pot-Pourri: Mistérios / Tempo Ao Tempo - Ao Vivo",
+                    "duration_ms": 231347,
+                    "preview_url": null
+                },
+                {
+                    "id": "5gTsKSg676OnCWYPa3gubA",
+                    "name": "Traz Ela de Volta Pra Mim - Ao Vivo",
+                    "duration_ms": 175810,
+                    "preview_url": null
+                },
+                {
+                    "id": "6djeEIRRv8oNqXDZf3fxTj",
+                    "name": "A Gente Nem Ficou - Ao Vivo",
+                    "duration_ms": 193456,
+                    "preview_url": null
+                },
+                {
+                    "id": "3CVMxfzk4Rwiyn25uTq1xH",
+                    "name": "Chove Chove - Ao Vivo",
+                    "duration_ms": 191115,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6nE1C92IIZQBnlYLxObRHW",
+            "name": "Live In London - At The Royal Albert Hall (Ao Vivo)",
+            "release_date": "2013-11-25",
+            "tracks": [
+                {
+                    "id": "2tX9QwcHOwWx01QSbLuB71",
+                    "name": "Amo Noite e Dia - Ao Vivo",
+                    "duration_ms": 231400,
+                    "preview_url": null
+                },
+                {
+                    "id": "73YYjRSgsMO35BC6ek4NbC",
+                    "name": "Flor - Ao Vivo",
+                    "duration_ms": 199893,
+                    "preview_url": null
+                },
+                {
+                    "id": "2TE9rkhJYDctxgzak0AnSb",
+                    "name": "Seu Astral - Ao Vivo",
+                    "duration_ms": 195933,
+                    "preview_url": null
+                },
+                {
+                    "id": "4eHqImchJpAhND9kx79T5j",
+                    "name": "Querendo Te Amar - Ao Vivo",
+                    "duration_ms": 185160,
+                    "preview_url": null
+                },
+                {
+                    "id": "6ZIrEB4Q8TU56fTcfutUv4",
+                    "name": "Pot-Pourri: Fogueira / Prisão Sem Grade - Ao Vivo",
+                    "duration_ms": 427626,
+                    "preview_url": null
+                },
+                {
+                    "id": "7lAlnayDxaxyVLi72fkeop",
+                    "name": "De Tanto Te Querer - Ao Vivo",
+                    "duration_ms": 176960,
+                    "preview_url": null
+                },
+                {
+                    "id": "0Tp1cl2NoJT9o0Nnt2iqrO",
+                    "name": "Enquanto Houver Razões - Ao Vivo",
+                    "duration_ms": 193480,
+                    "preview_url": null
+                },
+                {
+                    "id": "1p6dBmCdP7xh3OMTYJDZPK",
+                    "name": "O Que É Que Tem - Ao Vivo",
+                    "duration_ms": 215213,
+                    "preview_url": null
+                },
+                {
+                    "id": "2QggnWfD3RoavuaD5QlUJa",
+                    "name": "Um Dia Eu Te Levo Comigo - Ao Vivo",
+                    "duration_ms": 203480,
+                    "preview_url": null
+                },
+                {
+                    "id": "2i5PsJ1RIBcF7vxh1PyL5Z",
+                    "name": "Por Quê? - Ao Vivo",
+                    "duration_ms": 170560,
+                    "preview_url": null
+                },
+                {
+                    "id": "00An04LOF36saBLHZpBRLH",
+                    "name": "Aí Já Era - Ao Vivo",
+                    "duration_ms": 247893,
+                    "preview_url": null
+                },
+                {
+                    "id": "0bOqCHcUOMEDoDqYUL0PLW",
+                    "name": "A Hora É Agora - Ao Vivo",
+                    "duration_ms": 324466,
+                    "preview_url": null
+                },
+                {
+                    "id": "37PVa5ZwK1aWtk477Gz16G",
+                    "name": "Amor Pra Recomeçar - Ao Vivo",
+                    "duration_ms": 210866,
+                    "preview_url": null
+                },
+                {
+                    "id": "7ilFOqWTBELQFMZWCMhCTN",
+                    "name": "Se Eu Chorar - Ao Vivo",
+                    "duration_ms": 161093,
+                    "preview_url": null
+                },
+                {
+                    "id": "1xbHCh7U3HyhCrCClBTaGY",
+                    "name": "O Mundo É Tão Pequeno - Ao Vivo",
+                    "duration_ms": 191920,
+                    "preview_url": null
+                },
+                {
+                    "id": "4YnW6LfNuaJoC3yZMGpIQn",
+                    "name": "Pra Ter o Seu Amor - Ao Vivo",
+                    "duration_ms": 188466,
+                    "preview_url": null
+                },
+                {
+                    "id": "3UStHHOyFXetR5621bKJBz",
+                    "name": "Duas Metades - Ao Vivo",
+                    "duration_ms": 231360,
+                    "preview_url": null
+                },
+                {
+                    "id": "70irAGrMdoXxKzeG4uiduP",
+                    "name": "Mil Anos - Ao Vivo",
+                    "duration_ms": 186880,
+                    "preview_url": null
+                },
+                {
+                    "id": "4WHlb6EFH58GnsGVDl6gRZ",
+                    "name": "Onde Haja Sol - Ao Vivo",
+                    "duration_ms": 207160,
+                    "preview_url": null
+                },
+                {
+                    "id": "1b19BNzGtjhqYZsIdWAOeW",
+                    "name": "Eu Quero Só Você (Be With You) - Ao Vivo",
+                    "duration_ms": 196773,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "62YgoLjxwKRAvtIuY0a1dT",
+            "name": "A Hora É Agora - Ao Vivo Em Jurerê (Edição Bônus)",
+            "release_date": "2012-10-15",
+            "tracks": [
+                {
+                    "id": "2tuLmpaQAkQijfbU7i7cW6",
+                    "name": "A Hora É Agora - Ao Vivo",
+                    "duration_ms": 324093,
+                    "preview_url": null
+                },
+                {
+                    "id": "0NtygFZBa9Crh8STp0sE9e",
+                    "name": "Enquanto Houver Razões - Ao Vivo",
+                    "duration_ms": 191866,
+                    "preview_url": null
+                },
+                {
+                    "id": "6o8s71JygvcVqeQ6Lju4fV",
+                    "name": "Flor - Ao Vivo",
+                    "duration_ms": 191440,
+                    "preview_url": null
+                },
+                {
+                    "id": "2FHVk098xZ3ccaKMTszllz",
+                    "name": "Por Quê? - Ao Vivo",
+                    "duration_ms": 193720,
+                    "preview_url": null
+                },
+                {
+                    "id": "4P1UgZR3pJm4ZoBJSN6Gtc",
+                    "name": "Prisão Sem Grade - Ao Vivo",
+                    "duration_ms": 214333,
+                    "preview_url": null
+                },
+                {
+                    "id": "4VvTizPlG1pV0WxkCoj3Cs",
+                    "name": "O Que É Que Tem - Ao Vivo",
+                    "duration_ms": 207813,
+                    "preview_url": null
+                },
+                {
+                    "id": "1m2fMrwsgFdQv6LH6AHHaA",
+                    "name": "Eu Quero Só Você - Ao Vivo",
+                    "duration_ms": 191720,
+                    "preview_url": null
+                },
+                {
+                    "id": "4ZNLZ4DtAEBmX4vZAIkuAJ",
+                    "name": "Pra que Entender - Ao Vivo",
+                    "duration_ms": 181893,
+                    "preview_url": null
+                },
+                {
+                    "id": "12wkzsj0afo0VbUZk11lPg",
+                    "name": "Eu Quero Ser Teu Sol - Ao Vivo",
+                    "duration_ms": 194666,
+                    "preview_url": null
+                },
+                {
+                    "id": "6DqI2xICcSQZfFmywjs4mp",
+                    "name": "Passa Esse Modão - Ao Vivo",
+                    "duration_ms": 168240,
+                    "preview_url": null
+                },
+                {
+                    "id": "5IqQwS8PMF78ZiUj5sU7aE",
+                    "name": "Cartaz - Ao Vivo",
+                    "duration_ms": 150533,
+                    "preview_url": null
+                },
+                {
+                    "id": "6LDaWocP4SLcJr7EXXypVG",
+                    "name": "Diga Sim - Ao Vivo",
+                    "duration_ms": 188800,
+                    "preview_url": null
+                },
+                {
+                    "id": "0QJw8gBRV7x3FXNHTIdUSW",
+                    "name": "Invasões - Ao Vivo",
+                    "duration_ms": 203120,
+                    "preview_url": null
+                },
+                {
+                    "id": "00YjPRfEj9TAufoyvKu57g",
+                    "name": "Não Demora Perceber - Ao Vivo",
+                    "duration_ms": 175120,
+                    "preview_url": null
+                },
+                {
+                    "id": "5TDcxjAtXKwEKb4zXXlrqq",
+                    "name": "A Gente Nem Ficou - Ao Vivo",
+                    "duration_ms": 193360,
+                    "preview_url": null
+                },
+                {
+                    "id": "4lJrPJubYF98Ce8smeuNQx",
+                    "name": "Onda - Ao Vivo",
+                    "duration_ms": 169466,
+                    "preview_url": null
+                },
+                {
+                    "id": "5qj7YO9yruHTj2T7l7Zcoy",
+                    "name": "Ciclo - Ao Vivo",
+                    "duration_ms": 224826,
+                    "preview_url": null
+                },
+                {
+                    "id": "3B9nO5CIUEmobO8QTfgt3v",
+                    "name": "Duas Metades - Versão Estúdio",
+                    "duration_ms": 228826,
+                    "preview_url": null
+                },
+                {
+                    "id": "5pEf38a5FI5Wo3Dc9pJZiz",
+                    "name": "A Hora É Agora - Remix",
+                    "duration_ms": 278226,
+                    "preview_url": null
+                },
+                {
+                    "id": "4hw77M0vi1k4LpnwzT4wc9",
+                    "name": "Amo Noite E Dia - Remix",
+                    "duration_ms": 217640,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0Pz2s3BtUdMlf8K7MQ1OmN",
+            "name": "A Hora É Agora (Ao Vivo Em Jurerê)",
+            "release_date": "2012-10-15",
+            "tracks": [
+                {
+                    "id": "75T4td0kzWadHVTiT7KTsf",
+                    "name": "A Hora É Agora - Ao Vivo",
+                    "duration_ms": 324093,
+                    "preview_url": null
+                },
+                {
+                    "id": "5XrvlJDg5VDxf8ezkBjUKy",
+                    "name": "Enquanto Houver Razões - Ao Vivo",
+                    "duration_ms": 191866,
+                    "preview_url": null
+                },
+                {
+                    "id": "59nm8mNBtNiGWZMgrhU7wx",
+                    "name": "Flor - Ao Vivo",
+                    "duration_ms": 191440,
+                    "preview_url": null
+                },
+                {
+                    "id": "31PITvpYIBNmgMHBcBGOtw",
+                    "name": "Por Quê? - Ao Vivo",
+                    "duration_ms": 193720,
+                    "preview_url": null
+                },
+                {
+                    "id": "2cP4GaGkbnRP7ESOqcQzUd",
+                    "name": "Prisão Sem Grade - Ao Vivo",
+                    "duration_ms": 214333,
+                    "preview_url": null
+                },
+                {
+                    "id": "1wzBbuHRzc9TlYgI0ZlkpH",
+                    "name": "O Que É Que Tem - Ao Vivo",
+                    "duration_ms": 207813,
+                    "preview_url": null
+                },
+                {
+                    "id": "7blWdaLlmXMEh4ej2IPP8N",
+                    "name": "Eu Quero Só Você - Ao Vivo",
+                    "duration_ms": 191720,
+                    "preview_url": null
+                },
+                {
+                    "id": "5SJTV88zrhtaCwyBHdB9r0",
+                    "name": "Pra Que Entender - Ao Vivo",
+                    "duration_ms": 181893,
+                    "preview_url": null
+                },
+                {
+                    "id": "48VD8D59XJOJiYSgfxt41L",
+                    "name": "Eu Quero Ser Teu Sol - Ao Vivo",
+                    "duration_ms": 194666,
+                    "preview_url": null
+                },
+                {
+                    "id": "5q8IPEwjJrrF5Zq4Z6Rigs",
+                    "name": "Passa Esse Modão - Ao Vivo",
+                    "duration_ms": 168240,
+                    "preview_url": null
+                },
+                {
+                    "id": "6ob2NAEyRdo1zBH2NPISxJ",
+                    "name": "Cartaz - Ao Vivo",
+                    "duration_ms": 150533,
+                    "preview_url": null
+                },
+                {
+                    "id": "0NredpFiHnlftXCW4CWnYh",
+                    "name": "Diga Sim - Ao Vivo",
+                    "duration_ms": 188800,
+                    "preview_url": null
+                },
+                {
+                    "id": "2oE8v7cQrbg6CiFKZ4SXC1",
+                    "name": "Invasões - Ao Vivo",
+                    "duration_ms": 203120,
+                    "preview_url": null
+                },
+                {
+                    "id": "6KDStDhRiB6DxYFYeHiy09",
+                    "name": "Não Demora Perceber - Ao Vivo",
+                    "duration_ms": 175120,
+                    "preview_url": null
+                },
+                {
+                    "id": "0pjaUMLetChA8RIzGkrUPu",
+                    "name": "A Gente Nem Ficou - Ao Vivo",
+                    "duration_ms": 193360,
+                    "preview_url": null
+                },
+                {
+                    "id": "5NAwjjtw5sOPAp2vMZkk5U",
+                    "name": "Onda - Ao Vivo",
+                    "duration_ms": 169466,
+                    "preview_url": null
+                },
+                {
+                    "id": "3rvPV4mzh1sfklNo2lI5Qa",
+                    "name": "Ciclo - Ao Vivo",
+                    "duration_ms": 224826,
+                    "preview_url": null
+                },
+                {
+                    "id": "5ON5BW0tazw1lUD3c5jEkU",
+                    "name": "Duas Metades - Versão Estúdio",
+                    "duration_ms": 228653,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0RkEgK2Ch7H5IURwDYTTnt",
+            "name": "Jorge & Mateus Elétrico",
+            "release_date": "2012-01-01",
+            "tracks": [
+                {
+                    "id": "4JzAJ94FZ46g8ZrISUyK6X",
+                    "name": "De Tanto Te Querer - Jorge & Mateus Elétrico",
+                    "duration_ms": 177653,
+                    "preview_url": null
+                },
+                {
+                    "id": "1FGWZpqLbTVNdM688Fk9LK",
+                    "name": "Querendo Te Amar - Jorge & Mateus Elétrico",
+                    "duration_ms": 184666,
+                    "preview_url": null
+                },
+                {
+                    "id": "76dkxNcI3CtLsacgAzrlmR",
+                    "name": "E Daí - Jorge & Mateus Elétrico",
+                    "duration_ms": 140826,
+                    "preview_url": null
+                },
+                {
+                    "id": "2U3KXRvqU8j8YVMUSH0L9k",
+                    "name": "Se Eu Pedir Você Volta / Espelhos - Jorge & Mateus Elétrico",
+                    "duration_ms": 356680,
+                    "preview_url": null
+                },
+                {
+                    "id": "0A4XGsMWiKWZFbiYkFLUb5",
+                    "name": "Mistérios - Jorge & Mateus Elétrico",
+                    "duration_ms": 185773,
+                    "preview_url": null
+                },
+                {
+                    "id": "6EtI1we6uEz5Woj5VE727e",
+                    "name": "Pode Chorar - Jorge & Mateus Elétrico",
+                    "duration_ms": 204240,
+                    "preview_url": null
+                },
+                {
+                    "id": "6WDGYH4sp4JLrFg28tFlcQ",
+                    "name": "Traz Ela De Volta Pra Mim - Jorge & Mateus Elétrico",
+                    "duration_ms": 180133,
+                    "preview_url": null
+                },
+                {
+                    "id": "19m14DJ5ewUEi5tbGBtd0Y",
+                    "name": "Onde Haja Sol / Rise Up - Jorge & Mateus Elétrico",
+                    "duration_ms": 294253,
+                    "preview_url": null
+                },
+                {
+                    "id": "6baxLT5aOgZ3PlOCEqvvrY",
+                    "name": "O Mundo É Tão Pequeno - Jorge & Mateus Elétrico",
+                    "duration_ms": 208920,
+                    "preview_url": null
+                },
+                {
+                    "id": "6UcvPD57gvm4TdorUR87Dz",
+                    "name": "Um Dia Te Levo Comigo - Jorge & Mateus Elétrico",
+                    "duration_ms": 206746,
+                    "preview_url": null
+                },
+                {
+                    "id": "24IMxi4RUakB4bleLn2uBE",
+                    "name": "Pense Em Mim - Jorge & Mateus Elétrico",
+                    "duration_ms": 212560,
+                    "preview_url": null
+                },
+                {
+                    "id": "7arb2BWHl0sFWDKSTlW8SL",
+                    "name": "Fogueira - Jorge & Mateus Elétrico",
+                    "duration_ms": 181120,
+                    "preview_url": null
+                },
+                {
+                    "id": "7ekeibdvJOzY5hNaglURv0",
+                    "name": "Voa Voa - Jorge & Mateus Elétrico",
+                    "duration_ms": 258133,
+                    "preview_url": null
+                },
+                {
+                    "id": "25gxXERzqhJ8Q8VWYGMWdW",
+                    "name": "Voa Beija-Flor - Jorge & Mateus Elétrico [Final]",
+                    "duration_ms": 427333,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2I4edvhGVa3KZpB8YyVoY0",
+            "name": "Aí Já Era...",
+            "release_date": "2010-01-01",
+            "tracks": [
+                {
+                    "id": "6LNpAdMw4E10p7NLVqflJ4",
+                    "name": "Seu Astral - Live In Sao Paulo / 2010",
+                    "duration_ms": 191333,
+                    "preview_url": null
+                },
+                {
+                    "id": "2077eHXxwRgxDhEBtJV0wD",
+                    "name": "Amo Noite E Dia - Live In Sao Paulo / 2010",
+                    "duration_ms": 183480,
+                    "preview_url": null
+                },
+                {
+                    "id": "4egPftoF29KW8EWG4MZ9YL",
+                    "name": "Chove Chove - Live In Sao Paulo / 2010",
+                    "duration_ms": 193293,
+                    "preview_url": null
+                },
+                {
+                    "id": "7icIdol09oEWvD17W6awEc",
+                    "name": "Tempo Ao Tempo - Live In Sao Paulo / 2010",
+                    "duration_ms": 195240,
+                    "preview_url": null
+                },
+                {
+                    "id": "1YfgZhfn5vgCGDRLWnHycG",
+                    "name": "Se Eu Chorar - Live In Sao Paulo / 2010",
+                    "duration_ms": 163093,
+                    "preview_url": null
+                },
+                {
+                    "id": "39O5BUbpmSScEGadH6egs3",
+                    "name": "Esquece O Medo E Vem - Live In Sao Paulo / 2010",
+                    "duration_ms": 175053,
+                    "preview_url": null
+                },
+                {
+                    "id": "71ISqqJhm5QZLiVbscX0VN",
+                    "name": "Cilada - Live In Sao Paulo / 2010",
+                    "duration_ms": 188306,
+                    "preview_url": null
+                },
+                {
+                    "id": "2HzF3eyFAASGxrfT87QL6b",
+                    "name": "Volta Pra Minha Vida - Live In Sao Paulo / 2010",
+                    "duration_ms": 187786,
+                    "preview_url": null
+                },
+                {
+                    "id": "4FHxBdzLCkAmuEwclrNrf7",
+                    "name": "Refém - Live In Sao Paulo / 2010",
+                    "duration_ms": 184720,
+                    "preview_url": null
+                },
+                {
+                    "id": "2p52NSXhKsBaN9atOFvAqu",
+                    "name": "Mil Anos - Live In Sao Paulo / 2010",
+                    "duration_ms": 186400,
+                    "preview_url": null
+                },
+                {
+                    "id": "51iyw0DZhqQA3nz3xV5IlJ",
+                    "name": "Alguém No Seu Lugar - Live In Sao Paulo / 2010",
+                    "duration_ms": 182640,
+                    "preview_url": null
+                },
+                {
+                    "id": "41kL4VJYCoQU97aWzh8zw0",
+                    "name": "Pra Ter O Seu Amor - Live In Sao Paulo / 2010",
+                    "duration_ms": 184853,
+                    "preview_url": null
+                },
+                {
+                    "id": "6sdaUn6KRBX98uiJ8oBshn",
+                    "name": "Vestigios - Live In Sao Paulo / 2010",
+                    "duration_ms": 187173,
+                    "preview_url": null
+                },
+                {
+                    "id": "6hfF2RyNBCfpSFufkjBPoV",
+                    "name": "Aí Já Era - Live In Buenos Aires / 2010",
+                    "duration_ms": 248720,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "71KsVU9BNq03UvP8ILwoNQ",
+            "name": "Sem Cortes",
+            "release_date": "2009-01-01",
+            "tracks": [
+                {
+                    "id": "6ZAjvJRY6HBFsE6jVpcwsM",
+                    "name": "Vou Fazer Pirraça - Live",
+                    "duration_ms": 232093,
+                    "preview_url": null
+                },
+                {
+                    "id": "4E0gGEqlQzeko1433gW8X9",
+                    "name": "Querendo Te Amar - Live",
+                    "duration_ms": 176440,
+                    "preview_url": null
+                },
+                {
+                    "id": "2IfROewTXFOe4Ts6Bstuva",
+                    "name": "Tem Nada A Ver / Te Cuida Coração - Live",
+                    "duration_ms": 332986,
+                    "preview_url": null
+                },
+                {
+                    "id": "3jQyCU8CDVYicDQoFC7bhS",
+                    "name": "Amor Não É Jogo De Azar - Live",
+                    "duration_ms": 184333,
+                    "preview_url": null
+                },
+                {
+                    "id": "1PgUXhRShgPBrxM0X9v1VB",
+                    "name": "Se Eu Pedir, Cê Volta - Live",
+                    "duration_ms": 166080,
+                    "preview_url": null
+                },
+                {
+                    "id": "3yuhJPdTQeEzk04OateKb0",
+                    "name": "O Mundo É Tão Pequeno - Live",
+                    "duration_ms": 188840,
+                    "preview_url": null
+                },
+                {
+                    "id": "0qHZIakBlOCllac6nTkzuS",
+                    "name": "Onde Haja Sol - Live",
+                    "duration_ms": 199946,
+                    "preview_url": null
+                },
+                {
+                    "id": "5TymSSIpNjEPSliZpgy9LN",
+                    "name": "Traz Ela De Volta Pra Mim - Live",
+                    "duration_ms": 172466,
+                    "preview_url": null
+                },
+                {
+                    "id": "1paGftYX89m3T9eL7EZpID",
+                    "name": "Só Falta Você - Live",
+                    "duration_ms": 197400,
+                    "preview_url": null
+                },
+                {
+                    "id": "5TQ79vPFSr2EsWl1AmEy91",
+                    "name": "Mistérios - Live",
+                    "duration_ms": 186706,
+                    "preview_url": null
+                },
+                {
+                    "id": "1agFORyysG60x1VBLqF739",
+                    "name": "Voa Beija-Flor - Live",
+                    "duration_ms": 206853,
+                    "preview_url": null
+                },
+                {
+                    "id": "2NbuXHY68WV0neIdghft9W",
+                    "name": "Nova York - Live",
+                    "duration_ms": 195520,
+                    "preview_url": null
+                },
+                {
+                    "id": "7cXUyJFEofXG5GrDmQ1oMK",
+                    "name": "Um Dia Eu Te Levo Comigo - Live",
+                    "duration_ms": 199253,
+                    "preview_url": null
+                },
+                {
+                    "id": "4vR9XqUfRC4M0voS2n8VoA",
+                    "name": "Bebo Pra Carai - Live",
+                    "duration_ms": 98586,
+                    "preview_url": null
+                },
+                {
+                    "id": "4ePk3PpJpQWgkHJ2sTBNs3",
+                    "name": "Eu Bebo Sim / Mal Acostumada - \"Mal Acostumada\" Em Paródia/Live",
+                    "duration_ms": 73200,
+                    "preview_url": null
+                },
+                {
+                    "id": "4oolXUEQUfXjL8utFyWs29",
+                    "name": "De Tanto Te Querer - Live",
+                    "duration_ms": 176973,
+                    "preview_url": null
+                },
+                {
+                    "id": "5CwSZctFXKYYrNsry50iQb",
+                    "name": "Espelho - Live",
+                    "duration_ms": 182413,
+                    "preview_url": null
+                },
+                {
+                    "id": "0WIbVMjxxuFT4bd3UU2jeF",
+                    "name": "Goiânia Me Espera - Live",
+                    "duration_ms": 166480,
+                    "preview_url": null
+                },
+                {
+                    "id": "3ssXxNKgN0wzCobYGKHWBm",
+                    "name": "Amor Covarde - Live",
+                    "duration_ms": 198080,
+                    "preview_url": null
+                },
+                {
+                    "id": "5dUZWcuo0kVoRqdaAcEOg0",
+                    "name": "Eva / Ilariê / Tindolele - Live",
+                    "duration_ms": 348080,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7EPROKycuy8kgYCHsHFJu8",
+            "name": "O Mundo É Tão Pequeno",
+            "release_date": "2009-01-01",
+            "tracks": [
+                {
+                    "id": "0924327jhhMIKxNNLP3Vbz",
+                    "name": "Vou Fazer Pirraça - Ao Vivo",
+                    "duration_ms": 218893,
+                    "preview_url": null
+                },
+                {
+                    "id": "3HltzabRQk8D1ZIeacLDFy",
+                    "name": "Espelho - Ao Vivo",
+                    "duration_ms": 192653,
+                    "preview_url": null
+                },
+                {
+                    "id": "24UHZm1bx25ITCNUfvadlN",
+                    "name": "Um Dia Te Levo Comigo - Ao Vivo",
+                    "duration_ms": 202920,
+                    "preview_url": null
+                },
+                {
+                    "id": "63NDStZBacy7lNVvUtJxfk",
+                    "name": "Pra Nunca Dizer Adeus - Ao Vivo",
+                    "duration_ms": 201320,
+                    "preview_url": null
+                },
+                {
+                    "id": "5CkCOlVxiYPzREq0PeCKAN",
+                    "name": "Voa Beija-Flor - Ao Vivo",
+                    "duration_ms": 206253,
+                    "preview_url": null
+                },
+                {
+                    "id": "6yNcZpBQOMoMRNow1bYhub",
+                    "name": "Mistérios - Ao Vivo",
+                    "duration_ms": 185573,
+                    "preview_url": null
+                },
+                {
+                    "id": "7CRkaeghDa6C0r3RE6ExnR",
+                    "name": "Amor Covarde - Ao Vivo",
+                    "duration_ms": 227120,
+                    "preview_url": null
+                },
+                {
+                    "id": "1rDlMK0OQ1xwM6yP2wBewg",
+                    "name": "Onde Haja Sol - Ao Vivo",
+                    "duration_ms": 199226,
+                    "preview_url": null
+                },
+                {
+                    "id": "4a2fnLKdjSkePdHYz2qKZF",
+                    "name": "Saudade - Ao Vivo",
+                    "duration_ms": 227680,
+                    "preview_url": null
+                },
+                {
+                    "id": "4bfXRtwK1KawkpbG7ybGfL",
+                    "name": "O Mundo É Tão Pequeno - Ao Vivo",
+                    "duration_ms": 191946,
+                    "preview_url": null
+                },
+                {
+                    "id": "13Ptw7q3USfpeNHriXmxzQ",
+                    "name": "Se Eu Pedir, Cê Volta - Ao Vivo",
+                    "duration_ms": 170000,
+                    "preview_url": null
+                },
+                {
+                    "id": "59AfHTQtxlfTfATyZcJJHx",
+                    "name": "Só Eu Sei - Ao Vivo",
+                    "duration_ms": 166946,
+                    "preview_url": null
+                },
+                {
+                    "id": "07rQ8lzvuSQCb7mShL9zLB",
+                    "name": "Não Sai Da Minha Vida - Ao Vivo",
+                    "duration_ms": 260440,
+                    "preview_url": null
+                },
+                {
+                    "id": "39TH88f66Bm7McD4aomrnS",
+                    "name": "Mania De Te Amar - Ao Vivo",
+                    "duration_ms": 208160,
+                    "preview_url": null
+                },
+                {
+                    "id": "4toHO2DerHajm3V8DPBh3W",
+                    "name": "Só Falta Você - Ao Vivo",
+                    "duration_ms": 198533,
+                    "preview_url": null
+                },
+                {
+                    "id": "1Fy2RFOG6cDQ3rQuUouOpf",
+                    "name": "Violeiro Feliz De Goiás - Ao Vivo",
+                    "duration_ms": 211453,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6maNu0jtESLavq0mEsNXHh",
+            "name": "Jorge & Mateus Ao Vivo Em Goiânia (Ao Vivo Em Goiânia / 2007)",
+            "release_date": "2007-05-08",
+            "tracks": [
+                {
+                    "id": "3CfItCFqI7uuPuE2whC4Rx",
+                    "name": "Tem Nada A Ver / Te Cuida, Coração - Ao Vivo Em Goiânia / 2007 / Medley",
+                    "duration_ms": 347773,
+                    "preview_url": null
+                },
+                {
+                    "id": "60sy2FxlFNAme44em4aFhE",
+                    "name": "Fogueira - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 184520,
+                    "preview_url": null
+                },
+                {
+                    "id": "1vTOpNSpKyexTEt86ppYDB",
+                    "name": "Amor Não É Jogo De Azar - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 228800,
+                    "preview_url": null
+                },
+                {
+                    "id": "6D59FDr7ouN25azc5e4qj5",
+                    "name": "Castigo - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 203160,
+                    "preview_url": null
+                },
+                {
+                    "id": "5nl5o8d6DQCimMKmqHWYeZ",
+                    "name": "Morena Proibida - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 199733,
+                    "preview_url": null
+                },
+                {
+                    "id": "14uFGzI5JfdODnMYtFtwWP",
+                    "name": "Querendo Te Amar - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 178626,
+                    "preview_url": null
+                },
+                {
+                    "id": "28CSVlpd6z1KZsUEd1w4jN",
+                    "name": "De Tanto Te Querer - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 187240,
+                    "preview_url": null
+                },
+                {
+                    "id": "3jtdQbwAlWREWSb8U26cGW",
+                    "name": "Pode Chorar - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 204413,
+                    "preview_url": null
+                },
+                {
+                    "id": "2eLpCfYNgnGG8lDF6vfpbr",
+                    "name": "Tá Faltando Amor - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 185573,
+                    "preview_url": null
+                },
+                {
+                    "id": "5HeKtNkRSyNPR4HO1N4a0E",
+                    "name": "Chora, Viola / Caminheiro / Ladrão De Mulher / O Campeão / A Vaca Já Foi Pro Brejo - Ao Vivo Em Goiânia / 2007 / Medley",
+                    "duration_ms": 358013,
+                    "preview_url": null
+                },
+                {
+                    "id": "4UetNHBaB8CUcNWw684SAc",
+                    "name": "Me Leva - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 216333,
+                    "preview_url": null
+                },
+                {
+                    "id": "0rQt4T1SsEG11PCBJJuELU",
+                    "name": "Traz Ela De Volta Pra Mim - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 176173,
+                    "preview_url": null
+                },
+                {
+                    "id": "399IwRkhMoiNhF3tBuGmaj",
+                    "name": "Espinhos Na Cama / Avião Das Nove - Ao Vivo Em Goiânia / 2007 / Medley",
+                    "duration_ms": 146173,
+                    "preview_url": null
+                },
+                {
+                    "id": "2Vh5zXYCwaJI8g9ullRai6",
+                    "name": "Te Amo Tanto Que Nem Sei - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 176893,
+                    "preview_url": null
+                },
+                {
+                    "id": "3Ug6b1rpa4AQZN4quMd75L",
+                    "name": "Meu Desespero - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 155373,
+                    "preview_url": null
+                },
+                {
+                    "id": "7dfftDUxQcnjjmjFjbm6T4",
+                    "name": "Goiânia Me Espera - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 166613,
+                    "preview_url": null
+                },
+                {
+                    "id": "6GkUCsN1tEH24jobKl0yP7",
+                    "name": "Do Brasil A Argentina (Tô Indo Te Buscar) - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 200000,
+                    "preview_url": null
+                },
+                {
+                    "id": "0Iuy0skOOTpswfU14uzmTo",
+                    "name": "Cavaco Do Pau - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 186546,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "611EifiTtV0ZMMjNvv1LoB",
+            "name": "Pijama Amarelo (Ao Vivo)",
+            "release_date": "2024-11-06",
+            "tracks": [
+                {
+                    "id": "4PnYbyk6EA0zcASUc9huHP",
+                    "name": "Pijama Amarelo - Ao Vivo",
+                    "duration_ms": 199503,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6PkN1kNVVnJvT3f6MRy6pS",
+            "name": "NÃO ERA EU NÃO (AO VIVO)",
+            "release_date": "2024-11-06",
+            "tracks": [
+                {
+                    "id": "5sRnfTvfcBGLN8tVmh1IlK",
+                    "name": "NÃO ERA EU NÃO (AO VIVO)",
+                    "duration_ms": 169193,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "711n0ABtpMF0SjSuDrM1PK",
+            "name": "Xonei",
+            "release_date": "2024-08-15",
+            "tracks": [
+                {
+                    "id": "5sKGmZDmkGwFed5dPpZpZL",
+                    "name": "Xonei",
+                    "duration_ms": 154555,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5o1oFEoZqywFOOdfOcnMFt",
+            "name": "Pior Versão de Mim",
+            "release_date": "2024-08-14",
+            "tracks": [
+                {
+                    "id": "1bBBDOB0mX5VLlRUC1gmFY",
+                    "name": "Pior Versão de Mim",
+                    "duration_ms": 192167,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6atfirRbM5xZuQgZFGTTaS",
+            "name": "Nem Balancei (Ao Vivo)",
+            "release_date": "2024-06-28",
+            "tracks": [
+                {
+                    "id": "6ENo0tjJEwNi5vjIp0WlIo",
+                    "name": "Nem Balancei (Ao Vivo)",
+                    "duration_ms": 223642,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3ggNpT1t0EB9ZxbNybKlZy",
+            "name": "João Neto & Frederico 25 Anos Ao Vivo (Jorge & Mateus)",
+            "release_date": "2024-05-10",
+            "tracks": [
+                {
+                    "id": "0MjyZGtEFSgeOqE9hVe6KS",
+                    "name": "Memória Sexual - Ao Vivo",
+                    "duration_ms": 175034,
+                    "preview_url": null
+                },
+                {
+                    "id": "5EtqMR0QLeTB4gN3b3lHOK",
+                    "name": "Te Amo E Nada Mais - Ao Vivo",
+                    "duration_ms": 237940,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "63Y1cSRRScnzDhI6AzcW2p",
+            "name": "Chá De Cadeira (Ao Vivo)",
+            "release_date": "2024-04-26",
+            "tracks": [
+                {
+                    "id": "3Rd1zd7WHpzeuFxhDly7p5",
+                    "name": "Chá De Cadeira - Ao Vivo",
+                    "duration_ms": 190463,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "15GThOcgtXImBrv3PmlOm6",
+            "name": "Haverá Sinais (Ao Vivo)",
+            "release_date": "2024-02-14",
+            "tracks": [
+                {
+                    "id": "6X6jKoyw1OjogRghMEQAZV",
+                    "name": "Haverá Sinais - Ao Vivo",
+                    "duration_ms": 191365,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "23xCMjuFXyFuQ2k1Q4EXyx",
+            "name": "Dói",
+            "release_date": "2023-08-03",
+            "tracks": [
+                {
+                    "id": "5qjwjBzWAxXjjqinjENzIF",
+                    "name": "Dói",
+                    "duration_ms": 183232,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5g5FoLzmVaEL0PaO1ARU6Z",
+            "name": "Loira Do Paraná (Ao Vivo)",
+            "release_date": "2023-07-28",
+            "tracks": [
+                {
+                    "id": "37Ns0vnPTslm8MzGs5tAZ8",
+                    "name": "Loira Do Paraná - Ao Vivo",
+                    "duration_ms": 168639,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3HdNsM333zyZwDuRlneXXA",
+            "name": "Esses Caras São Ligeiro (Ao Vivo)",
+            "release_date": "2023-06-30",
+            "tracks": [
+                {
+                    "id": "5ZK7aSCekvak07cMqnP8Re",
+                    "name": "Esses Caras São Ligeiro - Ao Vivo",
+                    "duration_ms": 171351,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2L7apndkNd7E91IStDxSeE",
+            "name": "Porta Retrato (Ao Vivo)",
+            "release_date": "2023-06-15",
+            "tracks": [
+                {
+                    "id": "1oD99mJi7R3Ky4AmFrZCVu",
+                    "name": "Porta Retrato - Ao Vivo",
+                    "duration_ms": 177977,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "43oVFdlIqHb0pafTXNVajs",
+            "name": "Só Eu Sei (Ao Vivo)",
+            "release_date": "2023-05-05",
+            "tracks": [
+                {
+                    "id": "2jrR6JRAUZ9oMBvVze1Br5",
+                    "name": "Só Eu Sei - Ao Vivo",
+                    "duration_ms": 257919,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2GB3sbiNTxPchFUMOB1s1d",
+            "name": "Abuso de Poder (Ao Vivo)",
+            "release_date": "2023-04-27",
+            "tracks": [
+                {
+                    "id": "4tPfkDylIKAA169BCldEJH",
+                    "name": "Abuso de Poder - Ao Vivo",
+                    "duration_ms": 157520,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7fUmmNbQ0N88KTlJldyuBY",
+            "name": "Flor De Plástico (Ao Vivo)",
+            "release_date": "2023-04-06",
+            "tracks": [
+                {
+                    "id": "5xYuWPGh6labQb6QLOatcO",
+                    "name": "Flor De Plástico - Ao Vivo",
+                    "duration_ms": 179073,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2VxgyFYhdBSqBwmDRzUSJK",
+            "name": "Tempo Ao Tempo",
+            "release_date": "2023-01-24",
+            "tracks": [
+                {
+                    "id": "1xYEn7AJr4AlTuqXMzUUUe",
+                    "name": "Tempo Ao Tempo",
+                    "duration_ms": 164021,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2QK0cNElhPgXGxRx15mKbJ",
+            "name": "Perdoou Nada (Ao Vivo)",
+            "release_date": "2022-11-30",
+            "tracks": [
+                {
+                    "id": "4r2O8NHomHiJnFKqhYnqy1",
+                    "name": "Perdoou Nada - Ao Vivo",
+                    "duration_ms": 163120,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0I7xW9b6gDavthLOX9aphS",
+            "name": "Pactos (Ao Vivo)",
+            "release_date": "2022-10-12",
+            "tracks": [
+                {
+                    "id": "2M4kQD87lKnAS9vFlb4Bez",
+                    "name": "Pactos - Ao Vivo",
+                    "duration_ms": 183694,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "66Fae57CXKvHsZGUXHHzw5",
+            "name": "Não é o Fim do Mundo (Ao Vivo)",
+            "release_date": "2022-10-05",
+            "tracks": [
+                {
+                    "id": "4J0EuoLoM3LCBtt3e4Ht11",
+                    "name": "Não é o Fim do Mundo (Ao Vivo)",
+                    "duration_ms": 184373,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5ia121XUTMlasgUGHZSemg",
+            "name": "Frio da Madrugada (Ao Vivo)",
+            "release_date": "2022-09-15",
+            "tracks": [
+                {
+                    "id": "2MjWC17VDEdgwbK3uMr6Z1",
+                    "name": "Frio da Madrugada - Ao Vivo",
+                    "duration_ms": 268918,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6Y3F7RFN8cOh7ewKiyn2rC",
+            "name": "Beijo de Glicose (Ao Vivo)",
+            "release_date": "2022-09-01",
+            "tracks": [
+                {
+                    "id": "6gyhp7IcNhTYzwlk8utsgP",
+                    "name": "Beijo de Glicose - Ao Vivo",
+                    "duration_ms": 171007,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5uqNCWJ82S4mqSemCr3hsE",
+            "name": "Água nos Zói (Funk Remix)",
+            "release_date": "2022-07-08",
+            "tracks": [
+                {
+                    "id": "74Wlh9uWLrEQzq0k5M5oJW",
+                    "name": "Água nos Zói (Funk Remix)",
+                    "duration_ms": 179109,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6tcIk5cJCa6xNtRUuTTBVB",
+            "name": "Todo Seu (Ao Vivo)",
+            "release_date": "2022-05-05",
+            "tracks": [
+                {
+                    "id": "546dFmvwFGBY7MJOkV5ctq",
+                    "name": "Todo Seu - Ao Vivo",
+                    "duration_ms": 171712,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3ad9LZxCuQFtvQQXq2Rhbi",
+            "name": "Meu Número (Ao Vivo)",
+            "release_date": "2022-04-13",
+            "tracks": [
+                {
+                    "id": "2y6p6FC8Og2CO2CTccjfYB",
+                    "name": "Meu Número - Ao Vivo",
+                    "duration_ms": 208007,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0f64FVQbsJ2U7Jkdg25vgd",
+            "name": "Saudade de Ex (Ao Vivo)",
+            "release_date": "2022-03-11",
+            "tracks": [
+                {
+                    "id": "5ulngQFTHBe6Ds0AJUYhJA",
+                    "name": "Saudade de Ex - Ao Vivo",
+                    "duration_ms": 167025,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7oB45fn7Cht2hQd0yA2RzH",
+            "name": "Nem Balancei (Ao Vivo)",
+            "release_date": "2021-12-17",
+            "tracks": [
+                {
+                    "id": "6jZjXkbC9Gc3bDIibZB5xG",
+                    "name": "Nem Balancei - Ao Vivo",
+                    "duration_ms": 178946,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "27M30wcfpfaDbTPeTI1H9l",
+            "name": "Molhando o Volante",
+            "release_date": "2021-12-10",
+            "tracks": [
+                {
+                    "id": "3ITkrUvAA6gzxer2UIom3P",
+                    "name": "Molhando o Volante",
+                    "duration_ms": 162538,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2KCKubKci52voXuR1gcJXH",
+            "name": "A Mesma Aliança (Ao Vivo)",
+            "release_date": "2021-12-09",
+            "tracks": [
+                {
+                    "id": "1x89HRrzUVkGWNwgytnWrS",
+                    "name": "A Mesma Aliança - Ao Vivo",
+                    "duration_ms": 228693,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4m4L5pSZ62XAlNGhXHXZ3x",
+            "name": "Pódio",
+            "release_date": "2021-12-08",
+            "tracks": [
+                {
+                    "id": "4nzYO2gblduWhKhjmVZk1O",
+                    "name": "Pódio",
+                    "duration_ms": 182476,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "055iSHIEhSre9fapRUBcRP",
+            "name": "Água Nos Zói (Ao Vivo)",
+            "release_date": "2021-10-15",
+            "tracks": [
+                {
+                    "id": "77rIMl1WIrLf4ZDKFYZ4ji",
+                    "name": "Água Nos Zói - Ao Vivo",
+                    "duration_ms": 188951,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "27ihbfzqxFE0FWX9g4uMhG",
+            "name": "Geleira do tempo",
+            "release_date": "2021-10-01",
+            "tracks": [
+                {
+                    "id": "4ziqkaBXfo4GrmuF0gsNyi",
+                    "name": "Geleira do tempo",
+                    "duration_ms": 211831,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "11q1C8wIwlE0BPhn6LG79B",
+            "name": "Bom Rapaz (Ao Vivo) [Remix]",
+            "release_date": "2021-03-01",
+            "tracks": [
+                {
+                    "id": "1HHrFRCiZ6w6mxyw2jS7hY",
+                    "name": "Bom Rapaz (Ao Vivo) - Remix",
+                    "duration_ms": 171313,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "1GLViCxaCfb75xbzBGbskT",
+            "name": "Tudo Em Paz, Vol. 1",
+            "release_date": "2021-01-22",
+            "tracks": [
+                {
+                    "id": "1HHG11xcJ8AAgHqnIbGKjw",
+                    "name": "Lance Individual",
+                    "duration_ms": 164458,
+                    "preview_url": null
+                },
+                {
+                    "id": "3apM8wi1gU3PeVWvEPskv3",
+                    "name": "Vogais e Consoantes",
+                    "duration_ms": 216554,
+                    "preview_url": null
+                },
+                {
+                    "id": "77thl1ZG6v86i7us2LztP8",
+                    "name": "Hit do Ano",
+                    "duration_ms": 154848,
+                    "preview_url": null
+                },
+                {
+                    "id": "158ukl5rih76dOEsp0I91H",
+                    "name": "Paradigmas",
+                    "duration_ms": 157354,
+                    "preview_url": null
+                },
+                {
+                    "id": "3pIsUJiw8AAn39ESoCAWeH",
+                    "name": "Tem Que Sorrir",
+                    "duration_ms": 294720,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "532ccGsBf6MOSS0mD7yWSx",
+            "name": "Lance Individual",
+            "release_date": "2020-11-13",
+            "tracks": [
+                {
+                    "id": "7GLWWrk1YlkPYqJK3ynIA0",
+                    "name": "Lance Individual",
+                    "duration_ms": 164458,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4VGhIs8wUWMu2rKcsXe9Pm",
+            "name": "T. E. P., EP 1",
+            "release_date": "2020-03-06",
+            "tracks": [
+                {
+                    "id": "6t4GFrRJgdMijBL8qMU184",
+                    "name": "Tela Preta",
+                    "duration_ms": 180082,
+                    "preview_url": null
+                },
+                {
+                    "id": "0RaIjuKU5hudMteEXwr4RS",
+                    "name": "Ranking",
+                    "duration_ms": 166388,
+                    "preview_url": null
+                },
+                {
+                    "id": "098MRSXb4tj5EDVSUSpHIn",
+                    "name": "Instantes",
+                    "duration_ms": 166312,
+                    "preview_url": null
+                },
+                {
+                    "id": "5jS7pq2qBSF04FvOpcuWRM",
+                    "name": "Cheirosa - Ao Vivo",
+                    "duration_ms": 181930,
+                    "preview_url": null
+                },
+                {
+                    "id": "0zO5DDkIoDKVbX2y7TACIW",
+                    "name": "Tijolão - Ao Vivo",
+                    "duration_ms": 175219,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3UV3FcOPCo0vCHnKLIfN2V",
+            "name": "Spotify Singles",
+            "release_date": "2019-12-09",
+            "tracks": [
+                {
+                    "id": "4UUtssVRs2aQTLQCAAtZg1",
+                    "name": "Mil Anos - Recorded At Mosh Studios, São Paulo",
+                    "duration_ms": 189005,
+                    "preview_url": null
+                },
+                {
+                    "id": "7x2PPGgAptvKQI2Aw8XIY0",
+                    "name": "Quase Sem Querer - Recorded At Mosh Studios, São Paulo",
+                    "duration_ms": 194440,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2s8vRW3xvh5BP4CWKyh14X",
+            "name": "Cheirosa (Ao Vivo)",
+            "release_date": "2019-10-11",
+            "tracks": [
+                {
+                    "id": "2PWjKmjyTZeDpmOUa3a5da",
+                    "name": "Cheirosa - Ao Vivo",
+                    "duration_ms": 181930,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5DE5SfB2vmYatVH6tpAb49",
+            "name": "Tijolão (ao Vivo)",
+            "release_date": "2019-05-24",
+            "tracks": [
+                {
+                    "id": "6QwFUcPc5nhsqZuhXUYtV7",
+                    "name": "Tijolão - Ao Vivo",
+                    "duration_ms": 175219,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6ylhMJnWhwgus36dtMEGWi",
+            "name": "Surto De Amor (Ao Vivo)",
+            "release_date": "2019-03-10",
+            "tracks": [
+                {
+                    "id": "4N0I8lmbLPmH8qdlFIjuOU",
+                    "name": "Surto De Amor - Ao Vivo Em Uberlândia / 2018",
+                    "duration_ms": 157202,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "45YyKxr72FRkfABJ9feHji",
+            "name": "Sofazinho (Ao Vivo)",
+            "release_date": "2018-09-11",
+            "tracks": [
+                {
+                    "id": "1E3ARdOxnpVvqcCO51hFw6",
+                    "name": "Sofazinho - Ao Vivo",
+                    "duration_ms": 187378,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "28YC0ot3UDt6iLfjq5jIjg",
+            "name": "Contrato",
+            "release_date": "2017-11-01",
+            "tracks": [
+                {
+                    "id": "12lOxvml5EBvSCzQll7xVS",
+                    "name": "Contrato",
+                    "duration_ms": 194730,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "5odHcyWv2Zcw2O9Y273EYB",
+            "name": "Medida Certa",
+            "release_date": "2017-04-26",
+            "tracks": [
+                {
+                    "id": "44mr3ypWNHa0inr3heiOb2",
+                    "name": "Medida Certa",
+                    "duration_ms": 186816,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4cedPOaaloEadjHSh2JXET",
+            "name": "Se o Amor Tiver Lugar",
+            "release_date": "2017-01-27",
+            "tracks": [
+                {
+                    "id": "4sFVdIwmVj2y87qqOWwSU3",
+                    "name": "Se o Amor Tiver Lugar",
+                    "duration_ms": 159905,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "1blLK16SZZRetnJiUKP7H1",
+            "name": "Deixa Eu Voar",
+            "release_date": "2017",
+            "tracks": [
+                {
+                    "id": "5ETa4ydg2MxOB1y4MwVCMk",
+                    "name": "Deixa Eu Voar",
+                    "duration_ms": 145712,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3OnZeG1LndZCnSEYRsUxvI",
+            "name": "Marcapasso (Ao Vivo)",
+            "release_date": "2016-12-16",
+            "tracks": [
+                {
+                    "id": "3S7VDtTrIoS2PKkH8TbPSS",
+                    "name": "Marcapasso - Ao Vivo",
+                    "duration_ms": 183520,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7aq9wKRq9ZGTLN9nVoOec2",
+            "name": "Duas Metades (Ao Vivo) - Single",
+            "release_date": "2016-11-04",
+            "tracks": [
+                {
+                    "id": "2GMUokyMDjYdVa0Qv7KgNz",
+                    "name": "Duas Metades - Ao Vivo",
+                    "duration_ms": 239782,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0D2pjg8TI6HyW7ZqfonoKs",
+            "name": "De Tanto Te Querer (Ao Vivo) - Single",
+            "release_date": "2016-10-28",
+            "tracks": [
+                {
+                    "id": "2rt7hx1cUCDOYPXCwEn3SU",
+                    "name": "De Tanto Te Querer - Ao Vivo",
+                    "duration_ms": 180729,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4k0A5r5ECnv0FTAI1mavkf",
+            "name": "Ou Some Ou Soma - Single (Ao Vivo)",
+            "release_date": "2015-12-18",
+            "tracks": [
+                {
+                    "id": "0k76dyAkUjo22y8t2d8dbm",
+                    "name": "Ou Some Ou Soma (Ao Vivo)",
+                    "duration_ms": 195954,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7jakTqHKasceehB6UABQfN",
+            "name": "Sosseguei - Single",
+            "release_date": "2015-10-23",
+            "tracks": [
+                {
+                    "id": "4goNqp6L6of6FoJ8gH4RBP",
+                    "name": "Sosseguei",
+                    "duration_ms": 195369,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "4YMfYW8D6dAOL9IP8XlmE5",
+            "name": "31/12 - Single",
+            "release_date": "2015-02-05",
+            "tracks": [
+                {
+                    "id": "4CXOKJhkpke0onQtpDo8mn",
+                    "name": "31/12",
+                    "duration_ms": 318474,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "383PhAhB0U4bGUADSoKKeW",
+            "name": "Nocaute - Single",
+            "release_date": "2014-11-03",
+            "tracks": [
+                {
+                    "id": "4uZvMzLesJdtQ1ZJoMtdG7",
+                    "name": "Nocaute",
+                    "duration_ms": 168291,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3L7SYjMHOdAMsXqMR06311",
+            "name": "Calma - Single",
+            "release_date": "2014-10-21",
+            "tracks": [
+                {
+                    "id": "08S87JhTuW05ewSCeIwvwy",
+                    "name": "Calma",
+                    "duration_ms": 187789,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "6WrD7F4lnwRvYy7K5oVTit",
+            "name": "Seu Olhar - Single",
+            "release_date": "2014-09-15",
+            "tracks": [
+                {
+                    "id": "4nSMs48S8wC0wfL2x6GIUa",
+                    "name": "Seu Olhar",
+                    "duration_ms": 157154,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2Z49cNkpN4OcSKoUaSqLHz",
+            "name": "Logo Eu - Single",
+            "release_date": "2013-10-04",
+            "tracks": [
+                {
+                    "id": "5QFmS234WNRtmah2Pn3TMn",
+                    "name": "Logo Eu",
+                    "duration_ms": 156527,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "2QuMSlYGAqYZnZkZjtf2F0",
+            "name": "Duas Metades",
+            "release_date": "2012-01-01",
+            "tracks": [
+                {
+                    "id": "6NgW7wzdmgLJ81XPZMoTI6",
+                    "name": "Duas Metades",
+                    "duration_ms": 228706,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "31RTxNXW4MRdMgw9iK0rDu",
+            "name": "Amor Covarde",
+            "release_date": "2011-01-01",
+            "tracks": [
+                {
+                    "id": "3VBvSPELTk4p5fiPZiiik3",
+                    "name": "Amor Covarde",
+                    "duration_ms": 214026,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "3mimJkAE38eBmo4LLnzRWa",
+            "name": "Amo Noite E Dia (Acústico)",
+            "release_date": "2010-01-01",
+            "tracks": [
+                {
+                    "id": "5qE74diEDCd2EiaSBZ3jEH",
+                    "name": "Amo Noite E Dia - Acústico",
+                    "duration_ms": 190106,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0dKrqf4wsbeCO3VnzXclf4",
+            "name": "Amo Noite E Dia (Acústico Sem Bateria)",
+            "release_date": "2010-01-01",
+            "tracks": [
+                {
+                    "id": "1Qiot9NrUXpKkT45vpmSyH",
+                    "name": "Amo Noite E Dia - Acústico Sem Bateria",
+                    "duration_ms": 183826,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "0zQlaUmH7s280te2ANkYwM",
+            "name": "Amo Noite E Dia",
+            "release_date": "2010-01-01",
+            "tracks": [
+                {
+                    "id": "7wp6CdZePdMmNsfs8kKNwN",
+                    "name": "Amo Noite E Dia",
+                    "duration_ms": 190866,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "7ALFM9sTQ4mYod2AY7C4Wp",
+            "name": "Pode Chorar",
+            "release_date": "2009-01-01",
+            "tracks": [
+                {
+                    "id": "2j4gv0qDDxUkbjhjfobRLH",
+                    "name": "Pode Chorar - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 204480,
+                    "preview_url": null
+                }
+            ]
+        },
+        {
+            "id": "1CDeN7gCGA6je2GPJ8NXqR",
+            "name": "De Tanto Te Querer",
+            "release_date": "2009-01-01",
+            "tracks": [
+                {
+                    "id": "2tgWaZHFDU2gluUM4EhEKY",
+                    "name": "De Tanto Te Querer - Ao Vivo Em Goiânia / 2007",
+                    "duration_ms": 187293,
+                    "preview_url": null
+                }
+            ]
+        }
+    ]
+}
