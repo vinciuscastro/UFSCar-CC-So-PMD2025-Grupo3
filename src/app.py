@@ -32,14 +32,30 @@ neo4j = GraphDatabase.driver(
 neo4j.verify_connectivity()
 
 @app.route("/v1/artists/<artist_id>", methods=["GET"])
-def hello_api(artist_id):
+def get_artist(artist_id):
     artist = mongo_db.artists.find_one(
         {
             "_id": artist_id
         }
     )
 
+    if artist:
+        artist = {"id" if k == "_id" else k: v for k, v in artist.items()}
+
     return json.dumps(artist)
+
+@app.route("/v1/users/<username>", methods=["GET"])
+def get_user(username):
+    user = mongo_db.users.find_one(
+        {
+            "username": username,
+        },
+        {
+            "_id": False,
+        },
+    )
+
+    return json.dumps(user)
 
 if __name__=="__main__":
     app.run(debug=True)
