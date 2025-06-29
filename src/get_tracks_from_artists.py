@@ -3,8 +3,7 @@ import json
 from dotenv import load_dotenv
 import os
 
-bearer_token = "BQAW71Zoicyjbnh9sa7XoJQXJon_RsN0arTtDslZwTp92ExpMqOjQIUzko3mQQ-IP8s_ioaAYnOBYeBXfo3JyBTumPAdK39QjJNzdzjWQftmFbq7KkeC5TG8hJO61pfBPZetOiQD6Mk"
-# Trocar para o seu token atualizado
+bearer_token = "" # Trocar para o seu token atualizado
 
 headers = {
     'Authorization': f'Bearer {bearer_token}',
