@@ -1,3 +1,7 @@
+"""
+Server for the music catalog API
+"""
+
 import os
 import dotenv
 from flask import Flask, jsonify
@@ -31,21 +35,29 @@ neo4j = GraphDatabase.driver(
 )
 neo4j.verify_connectivity()
 
+
 @app.route("/v1/artists/<artist_id>", methods=["GET"])
 def get_artist(artist_id):
+    """
+    Endpoint for getting the artist resource by artist ID.
+    """
     artist = mongo_db.artists.find_one(
         {
             "_id": artist_id
         }
     )
 
-    if artist:
-        artist = {"id" if k == "_id" else k: v for k, v in artist.items()}
+    if not artist:
+        return jsonify(), 404
 
+    artist = {"id" if k == "_id" else k: v for k, v in artist.items()}
     return jsonify(artist)
 
 @app.route("/v1/users/<username>", methods=["GET"])
 def get_user(username):
+    """
+    Endpoint for getting the user resource by username.
+    """
     user = mongo_db.users.find_one(
         {
             "username": username,
@@ -55,7 +67,11 @@ def get_user(username):
         },
     )
 
+    if not user:
+        return jsonify(), 404
+
     return jsonify(user)
+
 
 if __name__=="__main__":
     app.run(debug=True)
