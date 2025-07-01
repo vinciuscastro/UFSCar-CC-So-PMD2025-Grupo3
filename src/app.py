@@ -1,7 +1,6 @@
 import os
-import json
 import dotenv
-from flask import Flask
+from flask import Flask, jsonify
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from neo4j import GraphDatabase
@@ -9,6 +8,7 @@ from neo4j import GraphDatabase
 dotenv.load_dotenv()
 
 app = Flask(__name__)
+app.json.sort_keys = False
 
 mongo_client = MongoClient(
     (f"mongodb+srv://{os.getenv("MONGODB_USERNAME")}:{os.getenv("MONGODB_PASSWORD")}"
@@ -42,7 +42,7 @@ def get_artist(artist_id):
     if artist:
         artist = {"id" if k == "_id" else k: v for k, v in artist.items()}
 
-    return json.dumps(artist)
+    return jsonify(artist)
 
 @app.route("/v1/users/<username>", methods=["GET"])
 def get_user(username):
@@ -55,7 +55,7 @@ def get_user(username):
         },
     )
 
-    return json.dumps(user)
+    return jsonify(user)
 
 if __name__=="__main__":
     app.run(debug=True)
