@@ -16,19 +16,41 @@ O sistema gera recomendações inteligentes: sugere novos artistas com base nas 
 
 ### Catálogo Musical
 
-- Obter dados de um artista
-- Obter dados de um lançamento
-- Calcular média de avaliações de um lançamento
+- Obter dados de um artista:
+    - ID
+    - Nome
+    - Gêneros
+    - Bio (opcional)
+    - Quantidade de seguidores
+    - Média de avaliações
+    - *Preview* da lista de lançamentos (ID, nome e ano de lançamento)
+- Obter dados de um lançamento:
+    - ID
+    - Nome
+    - Data de lançamento
+    - Média de avaliações
+    - Lista de faixas (índice, nome e duração)
 - Listar avaliações de um lançamento
 
-### Gestão de Usuários e Interações
+### Gestão de Usuários
 
 - Registrar usuário
-- Obter dados do usuário
+- Obter dados do usuário:
+    - *Username*
+    - Nome (opcional)
+    - Bio (opcional)
+    - Quantidade de amigos
+    - Quantidade de artistas seguidos
+    - Quantidade de avaliações feitas
 - Listar amigos do usuário
 - Listar artistas seguidos pelo usuário
+- Listar avaliações feitas pelo usuário
+
+### Interações
+
+- Adicionar um amigo
+- Seguir um artista
 - Avaliar um lançamento
-- Listar avaliações de um usuário
 
 ### Sistema de Recomendações
 
@@ -53,11 +75,11 @@ Para o desenvolvimento da API, optou-se por Python com o framework Flask. Python
 
 ## Fontes dos Dados
 
-Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através de seus endpoints públicos, assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos uma abordagem mista: a biblioteca Python Faker será responsável pela geração de dados mais básicos como nomes, enquanto a [Gemini Developer API](https://ai.google.dev/gemini-api/docs) complementará com elementos criativos como biografias personalizadas. Quanto às conexões sociais e às interações serão estabelecidas manualmente através de scripts Python.
+Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através de seus endpoints públicos, assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos a biblioteca Faker, do Python. Quanto às conexões sociais e interações, elas serão estabelecidas manualmente através de scripts Python.
 
 ```mermaid
 flowchart TB
-    A[Cliente] -->|Requisição| B[API Flask]
+    A[Cliente] -->|Requisição por API| B[Servidor Flask]
     B -->|Resposta| A
 
     B -->|Modifica| C[MongoDB]
@@ -67,8 +89,6 @@ flowchart TB
     D -->|Retorna dados| B
 
     E[Spotify API] -->|Fornece dados| F[Script Python]
-
-    G[Gemini API] -->|Fornece dados| F[Script Python]
 
     F[Script Python] -->|Insere dados| C
     F[Script Python] -->|Insere dados| D
@@ -80,22 +100,25 @@ flowchart TB
 
 Onde serão armazenados os dados dos usuários, artistas e lançamentos, contendo as seguintes coleções:
 
-- **Usuário:** username (único), nome (opcional), senha, biografia (opcional), quantidade de amigos, quantidade de artistas seguidos, quantidade de avaliações feitas.
-- **Artista:** ID, nome, gêneros, quantidade de seguidores, nível de popularidade, lista de lançamentos.
-- **Lançamento:** ID, nome, tipo de lançamento, data de lançamento, quantidade de avaliações, lista de faixas (nome e duração).
+- **Usuário**: username (único), nome (opcional), senha, bio (opcional), lista de amigos, lista de artistas seguidos, lista de avaliações feitas.
+    - **Avaliação**: ID do lançamento, nota.
+- **Artista**: ID, nome, gêneros, bio (opcional), quantidade de seguidores, lista de lançamentos.
+    - **Lançamento**: ID, nome, data de lançamento, quantidade de avaliações, lista de faixas, lista de avaliações.
+        - **Faixa**: índice, nome, duração.
+        - **Avaliação**: ID do usuário, nota.
 
 ### Neo4j
 
 **Tipos de Nó:**
 
-- Artista
-- Lançamento
-- Gênero
-- Usuário
+- Artista {ID, Nível de popularidade}
+- Lançamento {ID}
+- Gênero {Nome}
+- Usuário {Username}
 
 **Tipos de Relacionamento:**
 
-- (Artista) -[Possui]→ (Lançamento)
+- (Artista) -[Lança]→ (Lançamento)
 - (Artista) -[Pertence a]→ (Gênero)
 - (Usuário) -[Segue]→ (Artista)
 - (Usuário) -[Avaliou {Nota}]→ (Lançamento)
