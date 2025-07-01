@@ -24,6 +24,7 @@ O sistema gera recomendações inteligentes: sugere novos artistas com base nas 
     - Quantidade de seguidores
     - Média de avaliações
     - *Preview* da lista de lançamentos (ID, nome e ano de lançamento)
+- Listar músicas de um artista
 - Obter dados de um lançamento:
     - ID
     - Nome
