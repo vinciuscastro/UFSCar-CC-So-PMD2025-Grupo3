@@ -64,7 +64,7 @@ O sistema gera recomendações inteligentes: sugere novos artistas com base nas 
 
 ### MongoDB
 
-A escolha do MongoDB, um banco de dados orientado a documentos, justifica-se pela natureza semi estruturada dos dados musicais. Artistas, lançamentos e usuários possuem atributos variáveis que se adaptam naturalmente ao modelo de documentos flexíveis. Essa característica permite armazenar entidades com hierarquias aninhadas, como um lançamento contendo uma quantidade variável de faixas, sem exigir esquemas rígidos, facilitando futuras evoluções do modelo de dados. A escalabilidade horizontal do MongoDB também é crucial para lidar com o crescimento esperado do catálogo e base de usuários.
+A escolha do MongoDB como banco de dados orientado a documentos justifica-se pela natureza semiestruturada dos dados musicais e de usuários, que apresentam atributos variáveis e opcionais. Essa flexibilidade permite acomodar campos como biografias de artistas ou usuários que podem estar ausentes em alguns registros, bem como gerenciar estruturas de tamanho variável como a lista de lançamentos de um artista, que cresce indefinidamente. Além disso, a organização em documentos concentra todos os dados relacionados a uma entidade em um único local, otimizando operações como a recuperação de todas as músicas de um artista. Essa abordagem evita percursos custosos e desnecessários em um grafo do Neo4j, por exemplo, para essa operação básica. Complementando essas características, a escalabilidade horizontal nativa do MongoDB também é essencial para o crescimento projetado do catálogo musical e da base de usuários.
 
 ### Neo4j
 
@@ -76,7 +76,7 @@ Para o desenvolvimento da API, optou-se por Python com o framework Flask. Python
 
 ## Fontes dos Dados
 
-Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através de seus endpoints públicos, assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos a biblioteca Faker, do Python. Quanto às conexões sociais e interações, elas serão estabelecidas manualmente através de scripts Python.
+Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através da biblioteca [Spotipy](https://spotipy.readthedocs.io/en/2.25.1/), assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos a biblioteca Faker, do Python. Quanto às conexões sociais e interações, elas serão estabelecidas manualmente através de *scripts* Python.
 
 ```mermaid
 flowchart TB
@@ -101,7 +101,7 @@ flowchart TB
 
 Onde serão armazenados os dados dos usuários, artistas e lançamentos, contendo as seguintes coleções:
 
-- **Usuário**: username (único), nome (opcional), senha, bio (opcional), lista de amigos, lista de artistas seguidos, lista de avaliações feitas.
+- **Usuário**: *username* (único), nome (opcional), senha, bio (opcional), lista de amigos, lista de artistas seguidos, lista de avaliações feitas.
     - **Avaliação**: ID do lançamento, nota.
 - **Artista**: ID, nome, gêneros, bio (opcional), quantidade de seguidores, lista de lançamentos.
     - **Lançamento**: ID (possui índice), nome, data de lançamento, quantidade de avaliações, lista de faixas, lista de avaliações.
@@ -112,7 +112,7 @@ Onde serão armazenados os dados dos usuários, artistas e lançamentos, contend
 
 **Tipos de Nó:**
 
-- Artista {ID, Nível de popularidade}
+- Artista {ID, nível de popularidade}
 - Lançamento {ID}
 - Gênero {Nome}
 - Usuário {Username}
