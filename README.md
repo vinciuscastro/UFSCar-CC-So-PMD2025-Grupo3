@@ -76,7 +76,7 @@ Para o desenvolvimento da API, optou-se por Python com o framework Flask. Python
 
 ## Fontes dos Dados
 
-Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através da biblioteca [Spotipy](https://spotipy.readthedocs.io/en/2.25.1/), assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos a biblioteca Faker, do Python. Quanto às conexões sociais e interações, elas serão estabelecidas manualmente através de *scripts* Python.
+Os dados musicais (artistas, lançamentos e faixas) serão extraídas da [Spotify Web API](https://developer.spotify.com/documentation/web-api) através da biblioteca [Spotipy](https://spotipy.readthedocs.io/en/2.25.1/), assegurando informações atualizadas e precisas sobre o catálogo musical. Para os dados de usuários, utilizaremos uma abordagem mista: a biblioteca Faker, do Python, será responsável pela geração de dados mais básicos como nomes, enquanto a [Gemini Developer API](https://ai.google.dev/gemini-api/docs) complementará com elementos criativos como biografias personalizadas. Quanto às conexões sociais e às interações serão estabelecidas manualmente através de *scripts* Python.
 
 ```mermaid
 flowchart TB
@@ -90,6 +90,7 @@ flowchart TB
     D -->|Retorna dados| B
 
     E[Spotify API] -->|Fornece dados| F[Script Python]
+    G[Gemini API] -->|Fornece dados| F
 
     F[Script Python] -->|Insere dados| C
     F[Script Python] -->|Insere dados| D
@@ -102,11 +103,11 @@ flowchart TB
 Onde serão armazenados os dados dos usuários, artistas e lançamentos, contendo as seguintes coleções:
 
 - **Usuário**: *username* (único), nome (opcional), senha, bio (opcional), lista de amigos, lista de artistas seguidos, lista de avaliações feitas.
-    - **Avaliação**: ID do lançamento, nota.
+    - **Avaliação**: ID do lançamento, artista, nome do lançamento, nota.
 - **Artista**: ID, nome, gêneros, bio (opcional), quantidade de seguidores, lista de lançamentos.
     - **Lançamento**: ID (possui índice), nome, data de lançamento, quantidade de avaliações, lista de faixas, lista de avaliações.
         - **Faixa**: índice, nome, duração.
-        - **Avaliação**: ID do usuário, nota.
+        - **Avaliação**: *username*, nota.
 
 ### Neo4j
 
@@ -124,4 +125,3 @@ Onde serão armazenados os dados dos usuários, artistas e lançamentos, contend
 - (Usuário) -[Segue]→ (Artista)
 - (Usuário) -[Avaliou {Nota}]→ (Lançamento)
 - (Usuário) ←[É Amigo de]→ (Usuário)
-
