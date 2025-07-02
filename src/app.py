@@ -4,7 +4,7 @@ Server for the music catalog API
 
 import os
 import dotenv
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from neo4j import GraphDatabase
@@ -71,6 +71,51 @@ def get_user(username):
         return jsonify(), 404
 
     return jsonify(user)
+
+@app.route("/v1/recommendations/artists/<genre>", methods=["GET"])
+def get_artist_recs_by_genre(genre):
+    """
+    Endpoint for getting artist recommendations by genre.
+    """
+    limit = request.args.get("limit", default=10, type=int)
+    if limit <= 0:
+        return jsonify({"error": "Limit must be a positive integer"}), 400
+
+    limit = min(limit, 100)
+
+    records, _, _ = neo4j.execute_query(
+        """
+        MATCH (a:Artist)-[:BELONGS_TO]->(g:Genre {name: $genre})
+        RETURN a.id AS artist_id
+        ORDER BY a.popularity DESC
+        LIMIT $limit
+        """,
+        genre=genre,
+        limit=limit
+    )
+
+    artists = []
+
+    for record in records:
+        artist = mongo_db.artists.find_one(
+            {
+                "_id": record["artist_id"],
+            },
+            {
+                "_id": False,
+                "id": "$_id",
+                "name": True,
+                "genres": True,
+                "bio": True,
+            },
+        )
+
+        artists.append(artist)
+
+    if not artists:
+        return jsonify(), 404
+
+    return jsonify(artists)
 
 
 if __name__=="__main__":
