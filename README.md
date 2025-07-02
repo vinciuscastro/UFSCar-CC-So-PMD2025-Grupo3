@@ -90,6 +90,7 @@ flowchart TB
     D -->|Retorna dados| B
 
     E[Spotify API] -->|Fornece dados| F[Script Python]
+    G[Gemini API] -->|Fornece dados| F
 
     F[Script Python] -->|Insere dados| C
     F[Script Python] -->|Insere dados| D
