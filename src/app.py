@@ -41,17 +41,76 @@ def get_artist(artist_id):
     """
     Endpoint for getting the artist resource by artist ID.
     """
-    artist = mongo_db.artists.find_one(
+    artist_cursor = mongo_db.artists.aggregate([
         {
-            "_id": artist_id
+            "$match": {
+                "_id": artist_id
+            }
+        },
+        {
+            "$addFields": {
+                "allRatings": {
+                    "$reduce": {
+                        "input": "$releases",
+                        "initialValue": [],
+                        "in": {
+                            "$concatArrays": [
+                                "$$value",
+                                "$$this.ratings"
+                            ]
+                        }
+                    }
+                },
+                "mappedReleases": {
+                    "$map": {
+                        "input": "$releases",
+                        "as": "release",
+                        "in": {
+                            "id": "$$release.id",
+                            "name": "$$release.name",
+                            "release_year": {
+                                "$year": {
+                                    "$dateFromString": {
+                                        "dateString": "$$release.release_date"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "id": "$_id",
+                "name": True,
+                "genres": True,
+                "bio": True,
+                "qt_followers": True,
+                "average_rating": {
+                    "$cond": {
+                        "if": {
+                            "$gt": [{"$size": "$allRatings"}, 0],
+                        },
+                        "then": {
+                            "$avg": "$allRatings.rating"
+                        },
+                        "else": None
+                    }
+                },
+                "releases": "$mappedReleases"
+            }
         }
-    )
+    ])
 
-    if not artist:
+    artists_retrieved = tuple(artist_cursor)
+
+    if not artists_retrieved:
         return jsonify(), 404
 
-    artist = {"id" if k == "_id" else k: v for k, v in artist.items()}
-    return jsonify(artist)
+    return jsonify(artists_retrieved[0])
+
 
 @app.route("/v1/users/<username>", methods=["GET"])
 def get_user(username):
@@ -175,6 +234,82 @@ def rate_release(username):
     )
 
     return jsonify(), 201
+
+@app.route("/v1/users/<username>/follows", methods=["POST"])
+def follow_artist(username):
+    """
+    Endpoint for following an artist.
+    """
+    body = request.get_json()
+
+    if not body or 'artist_id' not in body:
+        return jsonify({"error": "artist_id is required"}), 400
+
+    artist_id = body['artist_id']
+
+    user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
+    artist = mongo_db.artists.find_one(
+        {
+            "_id": artist_id,
+        },
+        {
+            "_id": True,
+            "name": True,
+        },
+    )
+    if not artist:
+        return jsonify({"error": "Artist not found"}), 404
+
+    record, _, _ = neo4j.execute_query(
+        """
+        MATCH (u:User {username: $username})-[:FOLLOWS]->(a:Artist {id: $artist_id})
+        RETURN 1
+        """,
+        username=username,
+        artist_id=artist_id,
+    )
+    if record:
+        return jsonify({"error": "Already following this artist"}), 400
+
+    mongo_db.users.update_one(
+        {
+            "username": username,
+        },
+        {
+            "$push": {
+                "follows": {
+                    "artist_id": artist_id,
+                    "artist_name": artist["name"]
+                },
+            },
+        },
+    )
+
+    mongo_db.artists.update_one(
+        {
+            "_id": artist_id,
+        },
+        {
+            "$inc": {
+                "qt_followers": 1,
+            },
+        },
+    )
+
+    neo4j.execute_query(
+        """
+        MATCH (u:User {username: $username})
+        MATCH (a:Artist {id: $artist_id})
+        MERGE (u)-[:FOLLOWS]->(a)
+        """,
+        artist_id=artist_id,
+        username=username,
+    )
+
+    return jsonify({"message": "Successfully followed artist"}), 201
 
 @app.route("/v1/recommendations/artists/<genre>", methods=["GET"])
 def get_artist_recs_by_genre(genre):
