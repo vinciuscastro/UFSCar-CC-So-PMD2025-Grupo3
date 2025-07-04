@@ -72,6 +72,110 @@ def get_user(username):
 
     return jsonify(user)
 
+@app.route("/v1/users/<username>/ratings", methods=["POST"])
+def rate_release(username):
+    """
+    Endpoint for adding a rating to a user and release.
+    """
+    body = request.get_json()
+
+    if not body or 'release_id' not in body or 'rating' not in body:
+        return jsonify({"error": "release_id and rating are required"}), 400
+
+    release_id = body['release_id']
+    rating = body['rating']
+
+    if not isinstance(rating, int) or rating < 0 or rating > 10:
+        return jsonify({"error": "Rating must be a number between 0 and 10"}), 400
+
+    user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
+    release_cursor = mongo_db.artists.aggregate([
+        {
+            "$match": {
+                "releases.id": release_id
+            }
+        },
+        {
+            "$unwind": "$releases"
+        },
+        {
+            "$match": {
+                "releases.id": release_id
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "id": "$releases.id",
+                "artist_name": "$name",
+                "name": "$releases.name",
+            }
+        }
+    ])
+
+    release_results = tuple(release_cursor)
+    release = release_results[0] if release_results else None
+    if not release:
+        return jsonify({"error": "Release not found"}), 404
+
+    record, _, _ = neo4j.execute_query(
+        """
+        MATCH (u:User {username: $username})-[:RATED]->(r:Release {id: $release_id})
+        RETURN 1
+        """,
+        username=username,
+        release_id=release["id"],
+    )
+    if record:
+        return jsonify({"error": "Duplicate rating"}), 400
+
+    mongo_db.users.update_one(
+        {
+            "username": username,
+        },
+        {
+            "$push": {
+                "ratings": {
+                    "release_id": release["id"],
+                    "artist_name": release["artist_name"],
+                    "release_name": release["name"],
+                    "rating": rating,
+                },
+            },
+        },
+    )
+
+    mongo_db.artists.update_one(
+        {
+            "releases.id": release_id,
+        },
+        {
+            "$push": {
+                "releases.$.ratings": {
+                    "username": username,
+                    "rating": rating
+                }
+            }
+        }
+    )
+
+    neo4j.execute_query(
+        """
+        MATCH (r:Release {id: $release_id})
+        MATCH (u:User {username: $username})
+        MERGE (u)-[rel:RATED]->(r)
+        ON CREATE SET rel.rating = $rating
+        """,
+        release_id=release["id"],
+        username=username,
+        rating=rating,
+    )
+
+    return jsonify(), 201
+
 @app.route("/v1/recommendations/artists/<genre>", methods=["GET"])
 def get_artist_recs_by_genre(genre):
     """
