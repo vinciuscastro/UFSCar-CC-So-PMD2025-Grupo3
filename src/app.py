@@ -164,6 +164,42 @@ def get_release(release_id):
 
     return jsonify(release_results[0])
 
+@app.route("/v1/releases/<release_id>/ratings", methods=["GET"])
+def get_release_ratings(release_id):
+    """
+    Endpoint for getting all ratings for a specific release.
+    """
+    release_cursor = mongo_db.artists.aggregate([
+        {
+            "$match": {
+                "releases.id": release_id
+            }
+        },
+        {
+            "$unwind": "$releases"
+        },
+        {
+            "$match": {
+                "releases.id": release_id
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "id": "$releases.id",
+                "name": "$releases.name",
+                "artist": "$name",
+                "ratings": "$releases.ratings"
+            }
+        }
+    ])
+
+    release_results = tuple(release_cursor)
+    if not release_results:
+        return jsonify({"error": "Release not found"}), 404
+
+    return jsonify(release_results[0])
+
 
 @app.route("/v1/users/<username>", methods=["GET"])
 def get_user(username):
