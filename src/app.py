@@ -215,8 +215,12 @@ def get_user(username):
             "$project": {
                 "_id": False,
                 "username": True,
-                "name": True,
-                "bio": True,
+                "name": {
+                    "$ifNull": ["$name", None]
+                },
+                "bio": {
+                    "$ifNull": ["$bio", None]
+                },
                 "friend_count": {
                     "$size": "$friends",
                 },
@@ -617,6 +621,139 @@ def unfollow_artist(username, artist_id):
         """,
         username = username,
         artist_id = artist_id   ,
+    )
+
+    return jsonify(), 200
+
+@app.route("/v1/users/<username>/friends", methods=["POST"])
+def befriend_user(username):
+    """
+    Endpoint for adding a friend.
+    """
+    body = request.get_json()
+    if not body or 'username' not in body:
+        return jsonify({"error": "username is required"}), 400
+
+    friend_username = body['username']
+    if username == friend_username:
+        return jsonify({"error": "Cannot befriend yourself"}), 400
+
+    user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
+    friend_exists = mongo_db.users.count_documents({"username": friend_username}, limit=1) > 0
+    if not friend_exists:
+        return jsonify({"error": "Friend not found"}), 404
+
+    record, _, _ = neo4j.execute_query(
+        """
+        MATCH (u1:User {username: $username})-[:FRIENDS_WITH]-(u2:User {username: $friend_username})
+        RETURN 1
+        """,
+        username=username,
+        friend_username=friend_username,
+    )
+    if record:
+        return jsonify({"error": "Already friends with this user"}), 400
+
+    mongo_db.users.update_one(
+        {
+            "username": username,
+        },
+        {
+            "$push": {
+                "friends": {
+                    "username": friend_username,
+                },
+            },
+        },
+    )
+
+    mongo_db.users.update_one(
+        {
+            "username": friend_username,
+        },
+        {
+            "$push": {
+                "friends": {
+                    "username": username,
+                },
+            },
+        },
+    )
+
+    neo4j.execute_query(
+        """
+        MATCH (u1:User {username: $username})
+        MATCH (u2:User {username: $friend_username})
+        MERGE (u1)-[:FRIENDS_WITH]->(u2)
+        MERGE (u1)<-[:FRIENDS_WITH]-(u2)
+        """,
+        username=username,
+        friend_username=friend_username,
+    )
+
+    return jsonify(), 201
+
+@app.route("/v1/users/<username>/friends/<friend_username>", methods=["DELETE"])
+def unfriend_user(username, friend_username):
+    """
+    Endpoint for removing a friend.
+    """
+    user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
+    friend_exists = mongo_db.users.count_documents({"username": friend_username}, limit=1) > 0
+    if not friend_exists:
+        return jsonify({"error": "Friend not found"}), 404
+
+    record, _, _ = neo4j.execute_query(
+        """
+        MATCH (u1:User {username: $username})-[:FRIENDS_WITH]-(u2:User {username: $friend_username})
+        RETURN 1
+        """,
+        username=username,
+        friend_username=friend_username,
+    )
+    if not record:
+        return jsonify({"error": "Not friends with this user"}), 404
+
+    mongo_db.users.update_one(
+        {
+            "username": username,
+        },
+        {
+            "$pull": {
+                "friends": {
+                    "username": friend_username,
+                },
+            },
+        },
+    )
+
+    mongo_db.users.update_one(
+        {
+            "username": friend_username,
+        },
+        {
+            "$pull": {
+                "friends": {
+                    "username": username,
+                },
+            },
+        },
+    )
+
+    neo4j.execute_query(
+        """
+        MATCH (u1:User {username: $username})-[f1:FRIENDS_WITH]->(u2:User {username: $friend_username})
+        MATCH (u1)<-[f2:FRIENDS_WITH]-(u2)
+        DELETE f1, f2
+        """,
+        username=username,
+        friend_username=friend_username,
     )
 
     return jsonify(), 200
