@@ -22,12 +22,6 @@ def register_user():
     name = body.get('name')
     bio = body.get('bio')
 
-    if not username.strip():
-        return jsonify({"error": "Username cannot be empty"}), 400
-
-    if len(password) < 8:
-        return jsonify({"error": "Password must be at least 6 characters long"}), 400
-
     existing_user = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
     if existing_user:
         return jsonify({"error": "Username already exists"}), 409
@@ -36,7 +30,7 @@ def register_user():
     user["username"] = username
     user["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
     if name:
-        user["name"] = name.strip()
+        user["name"] = name
     if bio:
         user["bio"] = bio
     user["friends"] = []
@@ -145,16 +139,13 @@ def update_user(username):
     unset_ops = {}
 
     if 'password' in body:
-        password = body['password'].strip()
-        if len(password) < 8:
-            return jsonify({"error": "Password must be at least 8 characters long"}), 400
-
+        password = body['password']
         update_ops["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
     if 'name' in body:
         name = body['name']
         if name:
-            update_ops["name"] = name.strip()
+            update_ops["name"] = name
         else:
             unset_ops["name"] = True
 
