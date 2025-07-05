@@ -1,0 +1,152 @@
+"""
+Module for the 'artists/' route.
+"""
+from flask import Blueprint, jsonify
+from connections import mongodb
+
+bp = Blueprint("artists", __name__)
+
+@bp.route("/<artist_id>", methods=["GET"])
+def get_artist(artist_id):
+    """
+    Endpoint for getting the artist resource by artist ID.
+    """
+    artist_cursor = mongodb.db.artists.aggregate([
+        {
+            "$match": {
+                "_id": artist_id
+            }
+        },
+        {
+            "$addFields": {
+                "allRatings": {
+                    "$reduce": {
+                        "input": "$releases",
+                        "initialValue": [],
+                        "in": {
+                            "$concatArrays": [
+                                "$$value",
+                                "$$this.ratings"
+                            ]
+                        }
+                    }
+                },
+                "mappedReleases": {
+                    "$map": {
+                        "input": "$releases",
+                        "as": "release",
+                        "in": {
+                            "id": "$$release.id",
+                            "name": "$$release.name",
+                            "release_year": {
+                                "$year": {
+                                    "$dateFromString": {
+                                        "dateString": "$$release.release_date"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "id": "$_id",
+                "name": True,
+                "genres": True,
+                "bio": True,
+                "qt_followers": True,
+                "average_rating": {
+                    "$cond": {
+                        "if": {
+                            "$gt": [{"$size": "$allRatings"}, 0],
+                        },
+                        "then": {
+                            "$avg": "$allRatings.rating"
+                        },
+                        "else": None
+                    }
+                },
+                "releases": "$mappedReleases"
+            }
+        }
+    ])
+
+    artists_retrieved = tuple(artist_cursor)
+
+    if not artists_retrieved:
+        return jsonify(), 404
+
+    return jsonify(artists_retrieved[0])
+
+@bp.route("/<artist_id>/tracks", methods=["GET"])
+def get_artist_tracks(artist_id):
+    """
+    Endpoint for getting all tracks from an artist in alphabetical order.
+    """
+    tracks_cursor = mongodb.db.artists.aggregate([
+        {
+            "$match": {
+                "_id": artist_id,
+            },
+        },
+        {
+            "$unwind": "$releases",
+        },
+        {
+            "$unwind": "$releases.tracks",
+        },
+        {
+            "$group": {
+                "_id": {
+                    "artist_id": "$_id",
+                    "artist_name": "$name",
+                    "track_name": "$releases.tracks.name"
+                },
+                "releases": {
+                    "$push": {
+                        "id": "$releases.id",
+                        "name": "$releases.name",
+                    },
+                },
+            },
+        },
+        {
+            "$group": {
+                "_id": {
+                    "artist_id": "$_id.artist_id",
+                    "artist_name": "$_id.artist_name"
+                },
+                "items": {
+                    "$push": {
+                        "name": "$_id.track_name",
+                        "releases": "$releases",
+                    },
+                },
+            },
+        },
+        {
+            "$project": {
+                "_id": False,
+                "artist_id": "$_id.artist_id",
+                "artist_name": "$_id.artist_name",
+                "items": {
+                    "$sortArray": {
+                        "input": "$items",
+                        "sortBy": {
+                            "name": 1,
+                        },
+                    },
+                },
+            },
+        },
+    ])
+
+    tracks_results = list(tracks_cursor)
+
+    if not tracks_results:
+        return jsonify({"error": "Artist not found"}), 404
+
+    return jsonify(tracks_results[0])
