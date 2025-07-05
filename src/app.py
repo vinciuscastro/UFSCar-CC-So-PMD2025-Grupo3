@@ -62,7 +62,7 @@ def register_user():
     if existing_user:
         return jsonify({"error": "Username already exists"}), 409
 
-    user = dict()
+    user = {}
     user["username"] = username
     user["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
     if name:
@@ -155,6 +155,64 @@ def delete_user(username):
         """,
         username=username,
     )
+
+    return jsonify(), 200
+
+@app.route("/v1/users/<username>", methods=["PATCH"])
+def update_user(username):
+    """
+    Endpoint for updating user data (password, name, bio).
+    """
+    body = request.get_json()
+    if not body:
+        return jsonify({"error": "Request body is required"}), 400
+
+    user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
+    update_ops = {}
+    unset_ops = {}
+
+    if 'password' in body:
+        password = body['password'].strip()
+        if len(password) < 8:
+            return jsonify({"error": "Password must be at least 8 characters long"}), 400
+
+        update_ops["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    if 'name' in body:
+        name = body['name']
+        if name:
+            update_ops["name"] = name.strip()
+        else:
+            unset_ops["name"] = True
+
+    if 'bio' in body:
+        bio = body['bio']
+        if bio:
+            update_ops["bio"] = bio
+        else:
+            unset_ops["bio"] = True
+
+    if not update_ops and not unset_ops:
+        return jsonify({"error": "No valid fields to update"}), 400
+
+    update_doc = {}
+    if update_ops:
+        update_doc["$set"] = update_ops
+    if unset_ops:
+        update_doc["$unset"] = unset_ops
+
+    result = mongo_db.users.update_one(
+        {
+            "username": username,
+        },
+        update_doc,
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"error": "No changes made"}), 400
 
     return jsonify(), 200
 
