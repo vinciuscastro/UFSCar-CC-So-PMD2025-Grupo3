@@ -4,6 +4,7 @@ Server for the music catalog API
 
 import os
 import dotenv
+import hashlib
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
@@ -35,6 +36,127 @@ neo4j = GraphDatabase.driver(
 )
 neo4j.verify_connectivity()
 
+
+@app.route("/v1/users", methods=["POST"])
+def register_user():
+    """
+    Endpoint for registering a new user.
+    """
+    body = request.get_json()
+
+    if not body or 'username' not in body or 'password' not in body:
+        return jsonify({"error": "username and password are required"}), 400
+
+    username = body['username']
+    password = body['password']
+    name = body.get('name')
+    bio = body.get('bio')
+
+    if not username.strip():
+        return jsonify({"error": "Username cannot be empty"}), 400
+
+    if len(password) < 8:
+        return jsonify({"error": "Password must be at least 6 characters long"}), 400
+
+    existing_user = mongo_db.users.count_documents({"username": username}, limit=1) > 0
+    if existing_user:
+        return jsonify({"error": "Username already exists"}), 409
+
+    user = dict()
+    user["username"] = username
+    user["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    if name:
+        user["name"] = name.strip()
+    if bio:
+        user["bio"] = bio
+    user["friends"] = []
+    user["ratings"] = []
+    user["follows"] = []
+
+    mongo_db.users.insert_one(user)
+
+    neo4j.execute_query(
+        """
+        MERGE (u:User {username: $username})
+        """,
+        username = username
+    )
+
+    return jsonify(), 201
+
+@app.route("/v1/users/<username>", methods=["DELETE"])
+def delete_user(username):
+    """
+    Endpoint for deleting a user account.
+    """
+    user = mongo_db.users.find_one(
+        {
+            "username": username,
+        },
+        {
+            "friends": True,
+            "ratings": True,
+            "follows": True,
+        },
+    )
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    for friend in user["friends"]:
+        mongo_db.users.update_one(
+            {
+                "username": friend["username"],
+            },
+            {
+                "$pull": {
+                    "friends": {
+                        "username": username,
+                    },
+                },
+            },
+        )
+
+    for rating in user["ratings"]:
+        mongo_db.artists.update_one(
+            {
+                "releases.id": rating["id"],
+            },
+            {
+                "$pull": {
+                    "releases.$.ratings": {
+                        "username": username,
+                    }
+                }
+            }
+        )
+
+    for follow in user["follows"]:
+        mongo_db.artists.update_one(
+            {
+                "_id": follow["id"],
+            },
+            {
+                "$inc": {
+                    "qt_followers": -1,
+                },
+            },
+        )
+
+    mongo_db.users.delete_one(
+        {
+            "username": username,
+        },
+    )
+
+    neo4j.execute_query(
+        """
+        MATCH (u:User {username: $username})
+        DETACH DELETE u
+        """,
+        username=username,
+    )
+
+    return jsonify(), 200
 
 @app.route("/v1/artists/<artist_id>", methods=["GET"])
 def get_artist(artist_id):
