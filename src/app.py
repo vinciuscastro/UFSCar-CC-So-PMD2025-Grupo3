@@ -230,7 +230,7 @@ def rate_release(username):
     if not body or 'id' not in body or 'rating' not in body:
         return jsonify({"error": "id and rating are required"}), 400
 
-    id = body['id']
+    release_id = body['id']
     rating = body['rating']
 
     if not isinstance(rating, int) or rating < 0 or rating > 10:
@@ -243,7 +243,7 @@ def rate_release(username):
     release_cursor = mongo_db.artists.aggregate([
         {
             "$match": {
-                "releases.id": id
+                "releases.id": release_id
             }
         },
         {
@@ -251,7 +251,7 @@ def rate_release(username):
         },
         {
             "$match": {
-                "releases.id": id
+                "releases.id": release_id
             }
         },
         {
@@ -265,9 +265,10 @@ def rate_release(username):
     ])
 
     release_results = tuple(release_cursor)
-    release = release_results[0] if release_results else None
-    if not release:
+    if not release_results:
         return jsonify({"error": "Release not found"}), 404
+
+    release: dict = release_results[0]
 
     record, _, _ = neo4j.execute_query(
         """
@@ -298,7 +299,7 @@ def rate_release(username):
 
     mongo_db.artists.update_one(
         {
-            "releases.id": id,
+            "releases.id": release_id,
         },
         {
             "$push": {
@@ -324,8 +325,8 @@ def rate_release(username):
 
     return jsonify(), 201
 
-@app.route("/v1/users/<username>/ratings/<id>", methods=["DELETE"])
-def unrate_release(username, id):
+@app.route("/v1/users/<username>/ratings/<release_id>", methods=["DELETE"])
+def unrate_release(username, release_id):
     """
     Endpoint for removing a rating from a user and release.
     """
@@ -335,7 +336,7 @@ def unrate_release(username, id):
 
     release_exists = mongo_db.artists.count_documents(
         {
-            "releases.id": id,
+            "releases.id": release_id,
         },
         limit=1,
     ) > 0
@@ -348,7 +349,7 @@ def unrate_release(username, id):
         RETURN 1
         """,
         username=username,
-        release_id=id,
+        release_id=release_id,
     )
     if not record:
         return jsonify({"error": "Rating not found"}), 404
@@ -360,7 +361,7 @@ def unrate_release(username, id):
         {
             "$pull": {
                 "ratings": {
-                    "id": id,
+                    "id": release_id,
                 },
             },
         },
@@ -368,7 +369,7 @@ def unrate_release(username, id):
 
     mongo_db.artists.update_one(
         {
-            "releases.id": id,
+            "releases.id": release_id,
         },
         {
             "$pull": {
@@ -385,7 +386,7 @@ def unrate_release(username, id):
         DELETE r
         """,
         username=username,
-        release_id=id,
+        release_id=release_id,
     )
 
     return jsonify(), 200
@@ -400,7 +401,7 @@ def follow_artist(username):
     if not body or 'id' not in body:
         return jsonify({"error": "id is required"}), 400
 
-    id = body['id']
+    artist_id = body['id']
 
     user_exists = mongo_db.users.count_documents({"username": username}, limit=1) > 0
     if not user_exists:
@@ -408,7 +409,7 @@ def follow_artist(username):
 
     artist = mongo_db.artists.find_one(
         {
-            "_id": id,
+            "_id": artist_id,
         },
         {
             "_id": True,
@@ -423,8 +424,8 @@ def follow_artist(username):
         MATCH (u:User {username: $username})-[:FOLLOWS]->(a:Artist {id: $artist_id})
         RETURN 1
         """,
-        username=username,
-        artist_id=id,
+        username = username,
+        artist_id = artist_id,
     )
     if record:
         return jsonify({"error": "Already following this artist"}), 400
@@ -436,7 +437,7 @@ def follow_artist(username):
         {
             "$push": {
                 "follows": {
-                    "id": id,
+                    "id": artist_id,
                     "name": artist["name"]
                 },
             },
@@ -445,7 +446,7 @@ def follow_artist(username):
 
     mongo_db.artists.update_one(
         {
-            "_id": id,
+            "_id": artist_id,
         },
         {
             "$inc": {
@@ -460,14 +461,14 @@ def follow_artist(username):
         MATCH (a:Artist {id: $artist_id})
         MERGE (u)-[:FOLLOWS]->(a)
         """,
-        artist_id=id,
-        username=username,
+        artist_id = artist_id,
+        username = username,
     )
 
-    return jsonify({"message": "Successfully followed artist"}), 201
+    return jsonify(), 201
 
-@app.route("/v1/users/<username>/follows/<id>", methods=["DELETE"])
-def unfollow_artist(username, id):
+@app.route("/v1/users/<username>/follows/<artist_id>", methods=["DELETE"])
+def unfollow_artist(username, artist_id):
     """
     Endpoint for unfollowing an artist.
     """
@@ -475,7 +476,7 @@ def unfollow_artist(username, id):
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
-    artist_exists = mongo_db.artists.count_documents({"_id": id}, limit=1) > 0
+    artist_exists = mongo_db.artists.count_documents({"_id": artist_id}, limit=1) > 0
     if not artist_exists:
         return jsonify({"error": "Artist not found"}), 404
 
@@ -484,8 +485,8 @@ def unfollow_artist(username, id):
         MATCH (u:User {username: $username})-[:FOLLOWS]->(a:Artist {id: $artist_id})
         RETURN 1
         """,
-        username=username,
-        artist_id=id,
+        username = username,
+        artist_id = artist_id,
     )
     if not record:
         return jsonify({"error": "Not following this artist"}), 404
@@ -497,7 +498,7 @@ def unfollow_artist(username, id):
         {
             "$pull": {
                 "follows": {
-                    "id": id,
+                    "id": artist_id,
                 },
             },
         },
@@ -505,7 +506,7 @@ def unfollow_artist(username, id):
 
     mongo_db.artists.update_one(
         {
-            "_id": id,
+            "_id": artist_id,
         },
         {
             "$inc": {
@@ -519,41 +520,58 @@ def unfollow_artist(username, id):
         MATCH (u:User {username: $username})-[f:FOLLOWS]->(a:Artist {id: $artist_id})
         DELETE f
         """,
-        username=username,
-        artist_id=id,
+        username = username,
+        artist_id = artist_id   ,
     )
 
     return jsonify(), 200
 
 
-@app.route("/v1/recommendations/artists/<genre>", methods=["GET"])
-def get_artist_recs_by_genre(genre):
+@app.route("/v1/users/<username>/recs/artists", methods=["GET"])
+def get_artist_recs(username):
     """
     Endpoint for getting artist recommendations by genre.
     """
-    limit = request.args.get("limit", default=10, type=int)
+    limit = request.args.get("limit", default=5, type=int)
+    limit = min(limit, 50)
     if limit <= 0:
         return jsonify({"error": "Limit must be a positive integer"}), 400
 
-    limit = min(limit, 100)
+    genre = request.args.get("genre")
 
+    if genre:
+        return get_artist_recs_by_genre(username, genre, limit)
+    else:
+        return jsonify({"error": "No valid query parameter provided"}), 400
+
+def get_artist_recs_by_genre(username, genre, limit):
+    """
+    Function for getting artist recommendations by specific genre.
+    """
     records, _, _ = neo4j.execute_query(
         """
         MATCH (a:Artist)-[:BELONGS_TO]->(g:Genre {name: $genre})
-        RETURN a.id AS artist_id
+        WHERE NOT EXISTS {
+            MATCH (u:User {username: $username})-[:FOLLOWS]->(a)
+        }
+        RETURN a.id AS id
         ORDER BY a.popularity DESC
         LIMIT $limit
         """,
         genre=genre,
+        username=username,
         limit=limit
     )
+
+    if not records:
+        return jsonify({"error": "No artists found for this genre"}), 404
 
     artists = []
 
     for record in records:
         artist = mongo_db.artists.find_one(
             {
-                "_id": record["artist_id"],
+                "_id": record["id"],
             },
             {
                 "_id": False,
@@ -561,15 +579,11 @@ def get_artist_recs_by_genre(genre):
                 "name": True,
                 "genres": True,
                 "bio": True,
-            },
+            }
         )
-
         artists.append(artist)
 
-    if not artists:
-        return jsonify(), 404
-
-    return jsonify(artists)
+    return jsonify(artists), 200
 
 
 if __name__=="__main__":
