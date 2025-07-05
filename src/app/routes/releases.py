@@ -6,7 +6,7 @@ from connections import mongodb
 
 bp = Blueprint("releases", __name__)
 
-@bp.route("/<release_id>", methods=["GET"])
+@bp.route("/<release_id>", methods = ["GET"])
 def get_release(release_id):
     """
     Endpoint for getting the release resource by release ID.
@@ -57,7 +57,7 @@ def get_release(release_id):
 
     return jsonify(release_results[0])
 
-@bp.route("/<release_id>/ratings", methods=["GET"])
+@bp.route("/<release_id>/ratings", methods = ["GET"])
 def get_release_ratings(release_id):
     """
     Endpoint for getting all ratings for a specific release.

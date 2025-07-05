@@ -7,28 +7,28 @@ from connections import mongodb, neo4j
 
 bp = Blueprint("users", __name__)
 
-@bp.route("/", methods=["POST"])
+@bp.route("/", methods = ["POST"])
 def register_user():
     """
     Endpoint for registering a new user.
     """
     body = request.get_json()
 
-    if not body or 'username' not in body or 'password' not in body:
+    if not body or "username" not in body or "password" not in body:
         return jsonify({"error": "username and password are required"}), 400
 
-    username = body['username']
-    password = body['password']
-    name = body.get('name')
-    bio = body.get('bio')
+    username = body["username"]
+    password = body["password"]
+    name = body.get("name")
+    bio = body.get("bio")
 
-    existing_user = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    existing_user = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if existing_user:
         return jsonify({"error": "Username already exists"}), 409
 
     user = {}
     user["username"] = username
-    user["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    user["password"] = hashlib.sha256(password.encode("utf-8")).hexdigest()
     if name:
         user["name"] = name
     if bio:
@@ -48,7 +48,7 @@ def register_user():
 
     return jsonify(), 201
 
-@bp.route("/<username>", methods=["DELETE"])
+@bp.route("/<username>", methods = ["DELETE"])
 def delete_user(username):
     """
     Endpoint for deleting a user account.
@@ -117,12 +117,12 @@ def delete_user(username):
         MATCH (u:User {username: $username})
         DETACH DELETE u
         """,
-        username=username,
+        username = username,
     )
 
     return jsonify(), 200
 
-@bp.route("/<username>", methods=["PATCH"])
+@bp.route("/<username>", methods = ["PATCH"])
 def update_user(username):
     """
     Endpoint for updating user data (password, name, bio).
@@ -131,26 +131,26 @@ def update_user(username):
     if not body:
         return jsonify({"error": "Request body is required"}), 400
 
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
     update_ops = {}
     unset_ops = {}
 
-    if 'password' in body:
-        password = body['password']
-        update_ops["password"] = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    if "password" in body:
+        password = body["password"]
+        update_ops["password"] = hashlib.sha256(password.encode("utf-8")).hexdigest()
 
-    if 'name' in body:
-        name = body['name']
+    if "name" in body:
+        name = body["name"]
         if name:
             update_ops["name"] = name
         else:
             unset_ops["name"] = True
 
-    if 'bio' in body:
-        bio = body['bio']
+    if "bio" in body:
+        bio = body["bio"]
         if bio:
             update_ops["bio"] = bio
         else:
@@ -177,7 +177,7 @@ def update_user(username):
 
     return jsonify(), 200
 
-@bp.route("/<username>", methods=["GET"])
+@bp.route("/<username>", methods = ["GET"])
 def get_user(username):
     """
     Endpoint for getting the user resource by username.
@@ -217,7 +217,7 @@ def get_user(username):
 
     return jsonify(user_results[0])
 
-@bp.route("/<username>/friends", methods=["GET"])
+@bp.route("/<username>/friends", methods = ["GET"])
 def get_user_friends(username):
     """
     Endpoint for getting all friends of a user.
@@ -243,7 +243,7 @@ def get_user_friends(username):
 
     return jsonify(user_results[0])
 
-@bp.route("/<username>/ratings", methods=["GET"])
+@bp.route("/<username>/ratings", methods = ["GET"])
 def get_user_ratings(username):
     """
     Endpoint for getting all ratings of a user.
@@ -269,7 +269,7 @@ def get_user_ratings(username):
 
     return jsonify(user_results[0])
 
-@bp.route("/<username>/follows", methods=["GET"])
+@bp.route("/<username>/follows", methods = ["GET"])
 def get_user_follows(username):
     """
     Endpoint for getting all artists followed by a user.
@@ -295,23 +295,23 @@ def get_user_follows(username):
 
     return jsonify(user_results[0])
 
-@bp.route("/<username>/ratings", methods=["POST"])
+@bp.route("/<username>/ratings", methods = ["POST"])
 def rate_release(username):
     """
     Endpoint for adding a rating to a user and release.
     """
     body = request.get_json()
 
-    if not body or 'id' not in body or 'rating' not in body:
+    if not body or "id" not in body or "rating" not in body:
         return jsonify({"error": "id and rating are required"}), 400
 
-    release_id = body['id']
-    rating = body['rating']
+    release_id = body["id"]
+    rating = body["rating"]
 
     if not isinstance(rating, int) or rating < 0 or rating > 10:
         return jsonify({"error": "Rating must be a number between 0 and 10"}), 400
 
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
@@ -350,8 +350,8 @@ def rate_release(username):
         MATCH (u:User {username: $username})-[:RATED]->(r:Release {id: $release_id})
         RETURN 1
         """,
-        username=username,
-        release_id=release["id"],
+        username = username,
+        release_id = release["id"],
     )
     if record:
         return jsonify({"error": "Duplicate rating"}), 400
@@ -393,19 +393,19 @@ def rate_release(username):
         MERGE (u)-[rel:RATED]->(r)
         ON CREATE SET rel.rating = $rating
         """,
-        release_id=release["id"],
-        username=username,
-        rating=rating,
+        release_id = release["id"],
+        username = username,
+        rating = rating,
     )
 
     return jsonify(), 201
 
-@bp.route("/<username>/ratings/<release_id>", methods=["DELETE"])
+@bp.route("/<username>/ratings/<release_id>", methods = ["DELETE"])
 def unrate_release(username, release_id):
     """
     Endpoint for removing a rating from a user and release.
     """
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
@@ -413,7 +413,7 @@ def unrate_release(username, release_id):
         {
             "releases.id": release_id,
         },
-        limit=1,
+        limit = 1,
     ) > 0
     if not release_exists:
         return jsonify({"error": "Release not found"}), 404
@@ -423,8 +423,8 @@ def unrate_release(username, release_id):
         MATCH (u:User {username: $username})-[:RATED]->(r:Release {id: $release_id})
         RETURN 1
         """,
-        username=username,
-        release_id=release_id,
+        username = username,
+        release_id = release_id,
     )
     if not record:
         return jsonify({"error": "Rating not found"}), 404
@@ -460,25 +460,25 @@ def unrate_release(username, release_id):
         MATCH (u:User {username: $username})-[r:RATED]->(rel:Release {id: $release_id})
         DELETE r
         """,
-        username=username,
-        release_id=release_id,
+        username = username,
+        release_id = release_id,
     )
 
     return jsonify(), 200
 
-@bp.route("/<username>/follows", methods=["POST"])
+@bp.route("/<username>/follows", methods = ["POST"])
 def follow_artist(username):
     """
     Endpoint for following an artist.
     """
     body = request.get_json()
 
-    if not body or 'id' not in body:
+    if not body or "id" not in body:
         return jsonify({"error": "id is required"}), 400
 
-    artist_id = body['id']
+    artist_id = body["id"]
 
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
@@ -542,16 +542,16 @@ def follow_artist(username):
 
     return jsonify(), 201
 
-@bp.route("/<username>/follows/<artist_id>", methods=["DELETE"])
+@bp.route("/<username>/follows/<artist_id>", methods = ["DELETE"])
 def unfollow_artist(username, artist_id):
     """
     Endpoint for unfollowing an artist.
     """
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
-    artist_exists = mongodb.db.artists.count_documents({"_id": artist_id}, limit=1) > 0
+    artist_exists = mongodb.db.artists.count_documents({"_id": artist_id}, limit = 1) > 0
     if not artist_exists:
         return jsonify({"error": "Artist not found"}), 404
 
@@ -596,29 +596,29 @@ def unfollow_artist(username, artist_id):
         DELETE f
         """,
         username = username,
-        artist_id = artist_id   ,
+        artist_id = artist_id,
     )
 
     return jsonify(), 200
 
-@bp.route("/<username>/friends", methods=["POST"])
+@bp.route("/<username>/friends", methods = ["POST"])
 def befriend_user(username):
     """
     Endpoint for adding a friend.
     """
     body = request.get_json()
-    if not body or 'username' not in body:
+    if not body or "username" not in body:
         return jsonify({"error": "username is required"}), 400
 
-    friend_username = body['username']
+    friend_username = body["username"]
     if username == friend_username:
         return jsonify({"error": "Cannot befriend yourself"}), 400
 
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
-    friend_exists = mongodb.db.users.count_documents({"username": friend_username}, limit=1) > 0
+    friend_exists = mongodb.db.users.count_documents({"username": friend_username}, limit = 1) > 0
     if not friend_exists:
         return jsonify({"error": "Friend not found"}), 404
 
@@ -627,8 +627,8 @@ def befriend_user(username):
         MATCH (u1:User {username: $username})-[:FRIENDS_WITH]-(u2:User {username: $friend_username})
         RETURN 1
         """,
-        username=username,
-        friend_username=friend_username,
+        username = username,
+        friend_username = friend_username,
     )
     if record:
         return jsonify({"error": "Already friends with this user"}), 400
@@ -664,22 +664,22 @@ def befriend_user(username):
         MERGE (u1)-[:FRIENDS_WITH]->(u2)
         MERGE (u1)<-[:FRIENDS_WITH]-(u2)
         """,
-        username=username,
-        friend_username=friend_username,
+        username = username,
+        friend_username = friend_username,
     )
 
     return jsonify(), 201
 
-@bp.route("/<username>/friends/<friend_username>", methods=["DELETE"])
+@bp.route("/<username>/friends/<friend_username>", methods = ["DELETE"])
 def unfriend_user(username, friend_username):
     """
     Endpoint for removing a friend.
     """
-    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit = 1) > 0
     if not user_exists:
         return jsonify({"error": "User not found"}), 404
 
-    friend_exists = mongodb.db.users.count_documents({"username": friend_username}, limit=1) > 0
+    friend_exists = mongodb.db.users.count_documents({"username": friend_username}, limit = 1) > 0
     if not friend_exists:
         return jsonify({"error": "Friend not found"}), 404
 
@@ -688,8 +688,8 @@ def unfriend_user(username, friend_username):
         MATCH (u1:User {username: $username})-[:FRIENDS_WITH]-(u2:User {username: $friend_username})
         RETURN 1
         """,
-        username=username,
-        friend_username=friend_username,
+        username = username,
+        friend_username = friend_username,
     )
     if not record:
         return jsonify({"error": "Not friends with this user"}), 404
@@ -726,8 +726,8 @@ def unfriend_user(username, friend_username):
         MATCH (u1)<-[f2:FRIENDS_WITH]-(u2)
         DELETE f1, f2
         """,
-        username=username,
-        friend_username=friend_username,
+        username = username,
+        friend_username = friend_username,
     )
 
     return jsonify(), 200

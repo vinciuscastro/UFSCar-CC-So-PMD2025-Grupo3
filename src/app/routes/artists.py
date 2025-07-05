@@ -6,7 +6,7 @@ from connections import mongodb
 
 bp = Blueprint("artists", __name__)
 
-@bp.route("/<artist_id>", methods=["GET"])
+@bp.route("/<artist_id>", methods = ["GET"])
 def get_artist(artist_id):
     """
     Endpoint for getting the artist resource by artist ID.
@@ -81,7 +81,7 @@ def get_artist(artist_id):
 
     return jsonify(artists_retrieved[0])
 
-@bp.route("/<artist_id>/tracks", methods=["GET"])
+@bp.route("/<artist_id>/tracks", methods = ["GET"])
 def get_artist_tracks(artist_id):
     """
     Endpoint for getting all tracks from an artist in alphabetical order.
