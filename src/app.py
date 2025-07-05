@@ -111,6 +111,76 @@ def get_artist(artist_id):
 
     return jsonify(artists_retrieved[0])
 
+@app.route("/v1/artists/<artist_id>/tracks", methods=["GET"])
+def get_artist_tracks(artist_id):
+    """
+    Endpoint for getting all tracks from an artist in alphabetical order.
+    """
+    tracks_cursor = mongo_db.artists.aggregate([
+        {
+            "$match": {
+                "_id": artist_id,
+            },
+        },
+        {
+            "$unwind": "$releases",
+        },
+        {
+            "$unwind": "$releases.tracks",
+        },
+        {
+            "$group": {
+                "_id": {
+                    "artist_id": "$_id",
+                    "artist_name": "$name",
+                    "track_name": "$releases.tracks.name"
+                },
+                "releases": {
+                    "$push": {
+                        "id": "$releases.id",
+                        "name": "$releases.name",
+                    },
+                },
+            },
+        },
+        {
+            "$group": {
+                "_id": {
+                    "artist_id": "$_id.artist_id",
+                    "artist_name": "$_id.artist_name"
+                },
+                "items": {
+                    "$push": {
+                        "name": "$_id.track_name",
+                        "releases": "$releases",
+                    },
+                },
+            },
+        },
+        {
+            "$project": {
+                "_id": False,
+                "artist_id": "$_id.artist_id",
+                "artist_name": "$_id.artist_name",
+                "items": {
+                    "$sortArray": {
+                        "input": "$items",
+                        "sortBy": {
+                            "name": 1,
+                        },
+                    },
+                },
+            },
+        },
+    ])
+
+    tracks_results = list(tracks_cursor)
+
+    if not tracks_results:
+        return jsonify({"error": "Artist not found"}), 404
+
+    return jsonify(tracks_results[0])
+
 
 @app.route("/v1/releases/<release_id>", methods=["GET"])
 def get_release(release_id):
