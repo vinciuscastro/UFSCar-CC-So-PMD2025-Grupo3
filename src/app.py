@@ -158,7 +158,6 @@ def get_release(release_id):
     ])
 
     release_results = tuple(release_cursor)
-
     if not release_results:
         return jsonify(), 404
 
@@ -186,10 +185,10 @@ def get_release_ratings(release_id):
         {
             "$project": {
                 "_id": False,
-                "id": "$releases.id",
-                "name": "$releases.name",
-                "artist": "$name",
-                "ratings": "$releases.ratings"
+                "release_id": "$releases.id",
+                "release_name": "$releases.name",
+                "release_artist": "$name",
+                "items": "$releases.ratings"
             }
         }
     ])
@@ -206,19 +205,115 @@ def get_user(username):
     """
     Endpoint for getting the user resource by username.
     """
-    user = mongo_db.users.find_one(
+    user_cursor = mongo_db.users.aggregate([
         {
-            "username": username,
+            "$match": {
+                "username": username,
+            },
         },
         {
-            "_id": False,
+            "$project": {
+                "_id": False,
+                "username": True,
+                "name": True,
+                "bio": True,
+                "friend_count": {
+                    "$size": "$friends",
+                },
+                "rating_count": {
+                    "$size": "$ratings",
+                },
+                "follow_count": {
+                    "$size": "$follows",
+                },
+            },
         },
-    )
+    ])
 
-    if not user:
+    user_results = tuple(user_cursor)
+    if not user_results:
         return jsonify(), 404
 
-    return jsonify(user)
+    return jsonify(user_results[0])
+
+@app.route("/v1/users/<username>/friends", methods=["GET"])
+def get_user_friends(username):
+    """
+    Endpoint for getting all friends of a user.
+    """
+    user_cursor = mongo_db.users.aggregate([
+        {
+            "$match": {
+                "username": username,
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "username": True,
+                "items": "$friends",
+            },
+        },
+    ])
+
+    user_results = tuple(user_cursor)
+    if not user_results:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify(user_results[0])
+
+@app.route("/v1/users/<username>/ratings", methods=["GET"])
+def get_user_ratings(username):
+    """
+    Endpoint for getting all ratings of a user.
+    """
+    user_cursor = mongo_db.users.aggregate([
+        {
+            "$match": {
+                "username": username,
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "username": True,
+                "items": "$ratings",
+            },
+        },
+    ])
+
+    user_results = tuple(user_cursor)
+    if not user_results:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify(user_results[0])
+
+@app.route("/v1/users/<username>/follows", methods=["GET"])
+def get_user_follows(username):
+    """
+    Endpoint for getting all artists followed by a user.
+    """
+    user_cursor = mongo_db.users.aggregate([
+        {
+            "$match": {
+                "username": username,
+            }
+        },
+        {
+            "$project": {
+                "_id": False,
+                "username": True,
+                "items": "$follows",
+            },
+        },
+    ])
+
+    user_results = tuple(user_cursor)
+    if not user_results:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify(user_results[0])
+
 
 @app.route("/v1/users/<username>/ratings", methods=["POST"])
 def rate_release(username):
@@ -527,8 +622,8 @@ def unfollow_artist(username, artist_id):
     return jsonify(), 200
 
 
-@app.route("/v1/users/<username>/recs/artists", methods=["GET"])
-def get_artist_recs(username):
+@app.route("/v1/users/<username>/recs/artists/<genre>", methods=["GET"])
+def get_artist_recs_by_genre(username, genre):
     """
     Endpoint for getting artist recommendations by genre.
     """
@@ -537,17 +632,6 @@ def get_artist_recs(username):
     if limit <= 0:
         return jsonify({"error": "Limit must be a positive integer"}), 400
 
-    genre = request.args.get("genre")
-
-    if genre:
-        return get_artist_recs_by_genre(username, genre, limit)
-    else:
-        return jsonify({"error": "No valid query parameter provided"}), 400
-
-def get_artist_recs_by_genre(username, genre, limit):
-    """
-    Function for getting artist recommendations by specific genre.
-    """
     records, _, _ = neo4j.execute_query(
         """
         MATCH (a:Artist)-[:BELONGS_TO]->(g:Genre {name: $genre})
@@ -562,12 +646,10 @@ def get_artist_recs_by_genre(username, genre, limit):
         username=username,
         limit=limit
     )
-
     if not records:
         return jsonify({"error": "No artists found for this genre"}), 404
 
     artists = []
-
     for record in records:
         artist = mongo_db.artists.find_one(
             {
