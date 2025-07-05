@@ -69,7 +69,7 @@ def delete_user(username):
     for friend in user["friends"]:
         mongodb.db.users.update_one(
             {
-                "username": friend["username"],
+                "username": friend,
             },
             {
                 "$pull": {
@@ -639,9 +639,7 @@ def befriend_user(username):
         },
         {
             "$push": {
-                "friends": {
-                    "username": friend_username,
-                },
+                "friends": friend_username,
             },
         },
     )

@@ -79,9 +79,14 @@ def get_release_ratings(release_id):
         {
             "$project": {
                 "_id": False,
-                "release_id": "$releases.id",
-                "release_name": "$releases.name",
-                "release_artist": "$name",
+                "release": {
+                    "id": "$releases.id",
+                    "name": "$releases.name",
+                    "artist": {
+                        "id": "$_id",
+                        "name": "$name"
+                    }
+                },
                 "items": "$releases.ratings"
             }
         }

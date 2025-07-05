@@ -16,6 +16,10 @@ def get_artist_recs_by_genre(username, genre):
     if limit <= 0:
         return jsonify({"error": "Limit must be a positive integer"}), 400
 
+    user_exists = mongodb.db.users.count_documents({"username": username}, limit=1) > 0
+    if not user_exists:
+        return jsonify({"error": "User not found"}), 404
+
     records, _, _ = neo4j.driver.execute_query(
         """
         MATCH (a:Artist)-[:BELONGS_TO]->(g:Genre {name: $genre})

@@ -116,8 +116,8 @@ def get_artist_tracks(artist_id):
         {
             "$group": {
                 "_id": {
-                    "artist_id": "$_id.artist_id",
-                    "artist_name": "$_id.artist_name"
+                    "id": "$_id.artist_id",
+                    "name": "$_id.artist_name"
                 },
                 "items": {
                     "$push": {
@@ -130,8 +130,7 @@ def get_artist_tracks(artist_id):
         {
             "$project": {
                 "_id": False,
-                "artist_id": "$_id.artist_id",
-                "artist_name": "$_id.artist_name",
+                "artist": "$_id",
                 "items": {
                     "$sortArray": {
                         "input": "$items",
