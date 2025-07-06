@@ -2,7 +2,7 @@
 Module for the 'releases/' route.
 """
 from flask import Blueprint, jsonify
-from connections import mongodb
+from configs import mongodb
 
 bp = Blueprint("releases", __name__)
 
@@ -14,16 +14,16 @@ def get_release(release_id):
     release_cursor = mongodb.db.artists.aggregate([
         {
             "$match": {
-                "releases.id": release_id
-            }
+                "releases.id": release_id,
+            },
         },
         {
-            "$unwind": "$releases"
+            "$unwind": "$releases",
         },
         {
             "$match": {
-                "releases.id": release_id
-            }
+                "releases.id": release_id,
+            },
         },
         {
             "$project": {
@@ -32,7 +32,7 @@ def get_release(release_id):
                 "name": "$releases.name",
                 "artist": {
                     "id": "$_id",
-                    "name": "$name"
+                    "name": "$name",
                 },
                 "release_date": "$releases.release_date",
                 "rating_average": {
@@ -43,19 +43,21 @@ def get_release(release_id):
                         "then": {
                             "$avg": "$releases.ratings.rating",
                         },
-                        "else": None
-                    }
+                        "else": None,
+                    },
                 },
-                "tracks": "$releases.tracks"
-            }
-        }
+                "tracks": "$releases.tracks",
+            },
+        },
     ])
 
     release_results = tuple(release_cursor)
     if not release_results:
-        return jsonify(), 404
+        return jsonify({
+            "error": f"Release with ID '{release_id}' not found",
+        }), 404
 
-    return jsonify(release_results[0])
+    return jsonify(release_results[0]), 200
 
 @bp.route("/<release_id>/ratings", methods = ["GET"])
 def get_release_ratings(release_id):
@@ -65,16 +67,16 @@ def get_release_ratings(release_id):
     release_cursor = mongodb.db.artists.aggregate([
         {
             "$match": {
-                "releases.id": release_id
-            }
+                "releases.id": release_id,
+            },
         },
         {
-            "$unwind": "$releases"
+            "$unwind": "$releases",
         },
         {
             "$match": {
-                "releases.id": release_id
-            }
+                "releases.id": release_id,
+            },
         },
         {
             "$project": {
@@ -82,18 +84,17 @@ def get_release_ratings(release_id):
                 "release": {
                     "id": "$releases.id",
                     "name": "$releases.name",
-                    "artist": {
-                        "id": "$_id",
-                        "name": "$name"
-                    }
+                    "artist": "$name",
                 },
-                "items": "$releases.ratings"
-            }
-        }
+                "items": "$releases.ratings",
+            },
+        },
     ])
 
     release_results = tuple(release_cursor)
     if not release_results:
-        return jsonify({"error": "Release not found"}), 404
+        return jsonify({
+            "error": f"Release with ID '{release_id}' not found",
+        }), 404
 
-    return jsonify(release_results[0])
+    return jsonify(release_results[0]), 200

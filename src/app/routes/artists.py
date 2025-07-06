@@ -2,7 +2,7 @@
 Module for the 'artists/' route.
 """
 from flask import Blueprint, jsonify
-from connections import mongodb
+from configs import mongodb
 
 bp = Blueprint("artists", __name__)
 
@@ -77,9 +77,11 @@ def get_artist(artist_id):
     artists_retrieved = tuple(artist_cursor)
 
     if not artists_retrieved:
-        return jsonify(), 404
+        return jsonify({
+            "error": f"Artist with ID '{artist_id}' not found.",
+        }), 404
 
-    return jsonify(artists_retrieved[0])
+    return jsonify(artists_retrieved[0]), 200
 
 @bp.route("/<artist_id>/tracks", methods = ["GET"])
 def get_artist_tracks(artist_id):
@@ -143,9 +145,11 @@ def get_artist_tracks(artist_id):
         },
     ])
 
-    tracks_results = list(tracks_cursor)
+    tracks_results = tuple(tracks_cursor)
 
     if not tracks_results:
-        return jsonify({"error": "Artist not found"}), 404
+        return jsonify({
+            "error": f"Artist with ID '{artist_id}' not found.",
+        }), 404
 
-    return jsonify(tracks_results[0])
+    return jsonify(tracks_results[0]), 200

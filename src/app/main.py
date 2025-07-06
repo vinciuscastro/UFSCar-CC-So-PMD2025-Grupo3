@@ -2,7 +2,7 @@
 Server for the music catalog API
 """
 from flask import Flask
-from connections import mongodb, neo4j
+from configs import mongodb, neo4j
 from routes import artists, releases, users, recs
 
 app = Flask("Music Catalog API")
