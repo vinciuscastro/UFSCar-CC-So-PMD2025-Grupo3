@@ -650,9 +650,7 @@ def befriend_user(username):
         },
         {
             "$push": {
-                "friends": {
-                    "username": username,
-                },
+                "friends": username,
             },
         },
     )
@@ -700,9 +698,7 @@ def unfriend_user(username, friend_username):
         },
         {
             "$pull": {
-                "friends": {
-                    "username": friend_username,
-                },
+                "friends": friend_username,
             },
         },
     )
@@ -713,9 +709,7 @@ def unfriend_user(username, friend_username):
         },
         {
             "$pull": {
-                "friends": {
-                    "username": username,
-                },
+                "friends": username,
             },
         },
     )
