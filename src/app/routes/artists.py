@@ -3,6 +3,7 @@ Module for the 'artists/' route.
 """
 from flask import Blueprint, jsonify
 from configs import mongodb
+from configs.errors import Error
 
 bp = Blueprint("artists", __name__)
 
@@ -75,11 +76,8 @@ def get_artist(artist_id):
     ])
 
     artists_retrieved = tuple(artist_cursor)
-
     if not artists_retrieved:
-        return jsonify({
-            "error": f"Artist with ID '{artist_id}' not found.",
-        }), 404
+        return Error.ARTIST_NOT_FOUND.get_response(id = artist_id)
 
     return jsonify(artists_retrieved[0]), 200
 
@@ -146,10 +144,7 @@ def get_artist_tracks(artist_id):
     ])
 
     tracks_results = tuple(tracks_cursor)
-
     if not tracks_results:
-        return jsonify({
-            "error": f"Artist with ID '{artist_id}' not found.",
-        }), 404
+        return Error.ARTIST_NOT_FOUND.get_response(id = artist_id)
 
     return jsonify(tracks_results[0]), 200

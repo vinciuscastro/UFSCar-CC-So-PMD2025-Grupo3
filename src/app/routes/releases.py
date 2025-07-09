@@ -3,6 +3,7 @@ Module for the 'releases/' route.
 """
 from flask import Blueprint, jsonify
 from configs import mongodb
+from configs.errors import Error
 
 bp = Blueprint("releases", __name__)
 
@@ -53,9 +54,7 @@ def get_release(release_id):
 
     release_results = tuple(release_cursor)
     if not release_results:
-        return jsonify({
-            "error": f"Release with ID '{release_id}' not found",
-        }), 404
+        return Error.RELEASE_NOT_FOUND.get_response(id = release_id)
 
     return jsonify(release_results[0]), 200
 
@@ -93,8 +92,6 @@ def get_release_ratings(release_id):
 
     release_results = tuple(release_cursor)
     if not release_results:
-        return jsonify({
-            "error": f"Release with ID '{release_id}' not found",
-        }), 404
+        return Error.RELEASE_NOT_FOUND.get_response(id = release_id)
 
     return jsonify(release_results[0]), 200

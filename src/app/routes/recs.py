@@ -3,6 +3,7 @@ Module for the 'recs/' route.
 """
 from flask import Blueprint, jsonify, request
 from configs import mongodb, neo4j
+from configs.errors import Error
 from utils import helper
 
 bp = Blueprint("recs", __name__)
@@ -14,17 +15,12 @@ def get_artist_recs_by_genre(username, genre):
     """
     limit = request.args.get("limit", default = 5, type = int)
     limit = min(limit, 50)
-    if limit <= 0:
-        return jsonify({"error": "Limit must be a positive integer"}), 400
+    limit = max(1, limit)
 
     if not helper.exists("user", username):
-        return jsonify({
-            "error": f"User with username '{username}' not found.",
-        }), 404
+        return Error.USER_NOT_FOUND.get_response(username = username)
     if not helper.exists("genre", genre):
-        return jsonify({
-            "error": f"No artists found for the genre '{genre}.'",
-        }), 404
+        return Error.GENRE_NOT_FOUND.get_response(genre = genre)
 
     records, _, _ = neo4j.driver.execute_query(
         """
@@ -41,12 +37,10 @@ def get_artist_recs_by_genre(username, genre):
         limit = limit
     )
     if not records:
-        return jsonify({
-            "error": (
-                f"No recommendations for the user with username '{username}' "
-                f"in the genre '{genre}.'"
-            ),
-        }), 404
+        return Error.ARTIST_RECS_BY_GENRE_NOT_FOUND.get_response(
+            username = username,
+            genre = genre,
+        )
 
     artists = []
     for record in records:
