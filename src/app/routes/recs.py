@@ -59,3 +59,25 @@ def get_artist_recs_by_genre(username, genre):
         artists.append(artist)
 
     return jsonify(artists), 200
+
+@bp.route("/<username>/releases", methods = ["GET"])
+def get_release_recs_by_friends(username):
+    """
+    Endpoint for getting release recommendations by friends' positive reviews.
+    """
+
+@bp.route("/<username>/friends", methods = ["GET"])
+def get_friend_recs(username):
+    """
+    Endpoint for getting friend recommendations.
+    """
+
+def get_friend_recs_by_genres(username):
+    """
+    Function for getting friend recommendations by genre affinity.
+    """
+
+def get_friend_recs_by_reviews(username):
+    """
+    Function for getting friend recommendations by review similarity.
+    """
