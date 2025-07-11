@@ -9,7 +9,7 @@ from pymongo.server_api import ServerApi
 dotenv.load_dotenv()
 
 client = MongoClient(
-    (f"mongodb+srv://{os.getenv("MONGODB_USERNAME")}:{os.getenv("MONGODB_PASSWORD")}"
+    (f"mongodb+srv://{os.getenv('MONGODB_USERNAME')}:{os.getenv('MONGODB_PASSWORD')}"
     "@projeto-bd.9scqvyv.mongodb.net/"
     "?retryWrites=true&w=majority&appName=projeto-bd"),
     server_api = ServerApi(
