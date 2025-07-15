@@ -125,3 +125,11 @@ Onde serão armazenados os dados dos usuários, artistas e lançamentos, contend
 - (Usuário) -[Segue]→ (Artista)
 - (Usuário) -[Avaliou {Nota}]→ (Lançamento)
 - (Usuário) ←[É Amigo de]→ (Usuário)
+
+### Desenvolvimento
+Mostrar etapas do desenvolvimento
+
+### Dificuldades encontradas
+Falar sobre populacao e bio
+
+### Conclusão
