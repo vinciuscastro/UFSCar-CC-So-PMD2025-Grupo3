@@ -142,13 +142,13 @@ A solução demonstra que é possível combinar bancos de dados documentais e de
 
 ---
 
-## 🚀 Como Executar a Aplicação
+## Primeiros Passos
 
 1. **Clone o repositório**  
    ```bash
    git clone <URL_DO_SEU_REPO>
    cd <PASTA_DO_REPO>
-```
+    ```
 
 2. **Crie o arquivo `.env` na raiz do projeto**
    Preencha com suas credenciais:
@@ -181,7 +181,7 @@ A solução demonstra que é possível combinar bancos de dados documentais e de
 
 ---
 
-## 📚 Documentação da API
+## Documentação da API
 
 ### 🎤 Artistas
 #### `GET /v1/artists/<artist_id>`
