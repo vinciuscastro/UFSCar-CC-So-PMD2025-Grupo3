@@ -108,6 +108,34 @@ class Error(Enum):
         "status_code": 422
     }
 
+    FRIENDS_NOT_FOUND = {
+        "code": "FriendsNotFound",
+        "message": "The user with username '{username}' has no friends.",
+        "status_code": 404
+    }
+
+    NO_GENRE_DATA_FOUND = {
+        "code": "NoGenreDataFound",
+        "message": (
+            "No genre data was found for the user with username '{username}'."
+        ),
+        "status_code": 404
+    }
+
+    NO_RATINGS_FOUND = {
+        "code": "NoRatingsFound",
+        "message": (
+            "No ratings greater than 6 were found for the user with username '{username}'."
+        ),
+        "status_code": 404
+    }     
+
+    NO_FRIENDS_RATINGS_FOUND = {
+        "code": "NoFriendsRatingsFound",
+        "message": "No ratings > 6 found for any friends.",
+        "status_code": 404
+    }
+
     @property
     def code(self) -> str:
         """Get the error code."""
