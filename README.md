@@ -210,7 +210,7 @@ Retorna todas as faixas de um artista, agrupadas por nome da faixa e listando em
   ]
 }
 ```
-```
+
 
 
 **Erros possíveis**
@@ -486,7 +486,7 @@ Adiciona uma avaliação a um lançamento para o usuário, atualizando MongoDB e
   "rating": 4.5       // nota (número)
 }
 ```
-```
+
 
 **Resposta 201 Created**
 
