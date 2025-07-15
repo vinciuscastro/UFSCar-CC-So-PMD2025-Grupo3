@@ -140,12 +140,48 @@ Outro desafio importante envolveu o desempenho do Neo4j. Consultas muito profund
 O desenvolvimento resultou em uma API que integra catálogo musical, rede social e recomendações inteligentes de maneira coesa e eficiente. A aplicação permite acesso a informações atualizadas da Spotify Web API, gerenciamento de amizades, seguimento de artistas e registro de avaliações, alimentando um grafo de relacionamentos que serve de base para sugestões personalizadas.
 A solução demonstra que é possível combinar bancos de dados documentais e de grafos em um mesmo sistema, atendendo a diferentes tipos de consulta com eficiência. A utilização do Flask de forma direta simplifica a arquitetura e oferece uma base sólida e flexível, pronta para receber expansões como interfaces gráficas ou autenticação externa.
 
+---
 
+## 🚀 Como Executar a Aplicação
 
+1. **Clone o repositório**  
+   ```bash
+   git clone <URL_DO_SEU_REPO>
+   cd <PASTA_DO_REPO>
+```
 
-## 📚 Documentação da API
+2. **Crie o arquivo `.env` na raiz do projeto**
+   Preencha com suas credenciais:
+
+   ```env
+   MONGODB_USERNAME=
+   MONGODB_PASSWORD=
+   NEO4J_USERNAME=
+   NEO4J_PASSWORD=
+   ```
+
+3. **Instale as dependências**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Inicie a aplicação**
+
+   ```bash
+   python src/app/main.py
+   ```
+
+5. **Acesse no navegador**
+   A API estará disponível em:
+
+   ```
+   http://127.0.0.1:5000
+   ```
 
 ---
+
+## 📚 Documentação da API
 
 ### 🎤 Artistas
 #### `GET /v1/artists/<artist_id>`
