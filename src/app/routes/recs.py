@@ -61,7 +61,7 @@ def get_artist_recs_by_genre(username, genre):
 
     return jsonify(artists), 200
 
-@bp.route("/<username>/releases", methods = ["GET"])
+@bp.route("/<username>/releases/friends", methods = ["GET"])
 def get_release_recs_by_friends(username):
     """
     Endpoint for getting release recommendations by friends' positive reviews.
@@ -141,7 +141,7 @@ def get_release_recs_by_friends(username):
         return Error.RELEASE_NOT_FOUND.get_response(id = release_results["release_id"])
     
     response = {
-       "user": username,
+        "user": username,
         "friend": first_result["friend"],
         "release": release_results[0]["release"]["name"],
         "rating": first_result["rating"]
@@ -184,7 +184,7 @@ def get_friend_recs(username):
 
     return jsonify(response), 200
 
-
+@bp.route("/<username>/friends/genre", methods = ["GET"])
 def get_friend_recs_by_genres(username):
     """
     Endpoint for getting friend recommendations by genre affinity.
@@ -238,7 +238,7 @@ def get_friend_recs_by_genres(username):
 
     return jsonify(response), 200
 
-
+@bp.route("/<username>/friends/review", methods = ["GET"])
 def get_friend_recs_by_reviews(username):
     """
     Endpoint for getting friend recommendations by review similarity.
