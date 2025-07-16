@@ -63,6 +63,11 @@ class Error(Enum):
         ),
         "status_code": 404
     }
+    NO_FRIEND_RECS_FOUND = {
+        "code": "NoFriendRecsFound",
+        "message": "No friend recommendations found for user '{username}' in genre '{genre}'",
+        "status_code": 404,
+    }
 
     # Entity already exists errors
     USER_ALREADY_EXISTS = {

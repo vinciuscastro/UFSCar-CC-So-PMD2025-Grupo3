@@ -1,11 +1,11 @@
 """
 Module for the 'recs/' route.
 """
+import random
 from flask import Blueprint, jsonify, request
 from configs import mongodb, neo4j
 from configs.errors import Error
 from utils import helper
-import random
 
 bp = Blueprint("recs", __name__)
 
@@ -84,7 +84,7 @@ def get_release_recs_by_friends(username):
     """
     Endpoint for getting release recommendations by friends' positive reviews.
     """
-    if not helper.exists("username", username):
+    if not helper.exists("user", username):
         return Error.USER_NOT_FOUND.get_response(username=username)
 
     friends_rating = neo4j.driver.execute_query(
@@ -95,7 +95,7 @@ def get_release_recs_by_friends(username):
         ORDER BY r.rating DESC
         LIMIT 10
         """,
-        username=username
+        username = username
     )
 
     results = []
@@ -167,61 +167,74 @@ def get_friend_recs(username):
             method=by,
         )
 
-    user = mongodb.db.users.find_one({"username": username})
-    if not user:
+    if not helper.exists("user", username):
         return Error.USER_NOT_FOUND.get_response(username=username)
 
     if by == "genre":
         return get_friend_recs_by_genre(username)
-    else:
-        return get_friend_recs_by_reviews(username)
+    return get_friend_recs_by_reviews(username)
 
-def get_friend_recs_by_genre(user):
+def get_friend_recs_by_genre(username):
     """
     Endpoint for getting friend recommendations by genre affinity.
     """
-    friends = user["friends"]
-
-    genre_user = neo4j.driver.execute_query(
+    genre_result = neo4j.driver.execute_query(
         """
         MATCH (:User {username: $username})-[:FOLLOWS]->(a:Artist)-[:BELONGS_TO]->(g:Genre)
         WITH g.name AS genre, count(DISTINCT a) AS follows_count
         ORDER BY follows_count DESC
         LIMIT 1
-        RETURN genre, follows_count
+        RETURN genre
         """,
-        username=user["username"]
+        username=username,
     )
 
-    if not genre_user.records:
-        return Error.NO_GENRE_DATA_FOUND.get_response(username = user["username"])
+    if not genre_result.records:
+        return Error.NO_GENRE_DATA_FOUND.get_response(username = username)
 
-    most_common_genre = genre_user.records[0]["genre"]
+    most_common_genre = genre_result.records[0]["genre"]
 
     recs_result = neo4j.driver.execute_query(
         """
-        MATCH (u:User)-[:FOLLOWS]->(a:Artist)-[:BELONGS_TO]->(g:Genre)
-        WHERE g.name = $genre_name
-          AND NOT u.username IN $friends
-          AND u.username <> $username
+        MATCH (u:User)-[:FOLLOWS]->(a:Artist)-[:BELONGS_TO]->(g:Genre {name: $genre})
+        WHERE NOT EXISTS {
+            MATCH (:User {username: $username})-[:FRIENDS_WITH]-(u)
+        }
         WITH u, count(a) AS follows_count
         ORDER BY follows_count DESC
         LIMIT 10
         RETURN u.username AS recommended_user
         """,
-        genre_name=most_common_genre,
-        friends=list(friends),
-        username=user["username"]
+        genre=most_common_genre,
+        username=username,
     )
 
-    recommended_users = []
-    for record in recs_result.records:
-        recommended_users.append({"recommended_users": record["recommended_user"]})
+    if not recs_result.records:
+        return Error.NO_FRIEND_RECS_FOUND.get_response(username=username, genre=most_common_genre)
+
+    selected_username = random.choice(recs_result.records)["recommended_user"]
+
+    user_details = mongodb.db.users.find_one(
+        {
+            "username": selected_username,
+        },
+        {
+            "_id": False,
+            "username": True,
+            "name": True,
+            "bio": True
+        }
+    )
 
     response = {
-        "user": user["username"],
-        "genre": most_common_genre,
-        "recommended_users": recommended_users
+        "user": {
+            "username": user_details["username"],
+            "name": user_details["name"],
+            "bio": user_details["bio"]
+        },
+        "by": {
+            "genre": most_common_genre
+        }
     }
 
     return jsonify(response), 200
