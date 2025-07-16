@@ -133,8 +133,9 @@ O sistema de recomendações foi projetado para combinar afinidade de gêneros m
 
 ### Dificuldades encontradas
 Durante a geração de biografias dos usuários, a principal limitação técnica enfrentada foi a cota diária da Gemini Developer API. Como o número de chamadas era restrito, a criação dos perfis precisou ser distribuída ao longo de vários dias, o que impactou o ritmo de populamento do sistema. Também foi necessário realizar diversos ajustes nos prompts enviados à API para obter descrições que fossem criativas e ao mesmo tempo coerentes com o contexto musical.
-Além disso, a criação dos scripts para popular os relacionamentos no Neo4j apresentou desafios. Foi preciso desenvolver uma lógica capaz de gerar conexões aleatórias entre usuários, artistas e avaliações de forma realista e equilibrada, para garantir que o grafo representasse uma rede social funcional. Essa tarefa exigiu várias iterações para ajustar a distribuição e a densidade das relações, de modo a evitar tanto um grafo muito esparso quanto um excessivamente denso.
-Outro desafio importante envolveu o desempenho do Neo4j. Consultas muito profundas ou que envolviam um grande volume de nós acabavam comprometendo a performance. Para lidar com isso, foram realizadas otimizações nas consultas Cypher, aplicando limites adequados e ajustando os índices, garantindo um funcionamento mais fluido nas interações com o grafo.
+A criação dos scripts para popular os relacionamentos no Neo4j também apresentou dificuldades. Foi preciso desenvolver uma lógica capaz de gerar conexões aleatórias entre usuários, artistas e avaliações de forma realista e equilibrada, garantindo que o grafo representasse uma rede social funcional. Esse processo exigiu várias iterações para ajustar a densidade das conexões e evitar um grafo artificialmente raso ou excessivamente denso. Além disso, a conexão com o Aura se mostrava instável, frequentemente sendo interrompida durante a execução dos scripts, o que atrapalhava a continuidade do populamento. A população em massa no Neo4j também se mostrou consideravelmente mais lenta em comparação com o MongoDB, aumentando o tempo necessário para completar a inserção de dados.
+Também houve bastante dificuldade na criação do script de geração automática de relacionamentos no Neo4j. A conexão com o Aura se mostrava instável e frequentemente era interrompida durante a execução, o que atrapalhava o progresso do populamento. Além disso, a população em massa no Neo4j demonstrou ser consideravelmente mais lenta do que no MongoDB, o que tornou o processo de inserção de grandes volumes de dados mais trabalhoso. Somando a isso, consultas muito profundas ou que envolviam um grande volume de nós acabavam comprometendo ainda mais a performance geral do banco. Para contornar esses problemas, foram realizadas otimizações nas consultas Cypher, aplicando limites adequados e ajustando os índices, garantindo um funcionamento mais fluido nas interações com o grafo.
+
 
 ### Conclusão
 O desenvolvimento resultou em uma API que integra catálogo musical, rede social e recomendações inteligentes de maneira coesa e eficiente. A aplicação permite acesso a informações atualizadas da Spotify Web API, gerenciamento de amizades, seguimento de artistas e registro de avaliações, alimentando um grafo de relacionamentos que serve de base para sugestões personalizadas.
@@ -146,8 +147,8 @@ A solução demonstra que é possível combinar bancos de dados documentais e de
 
 1. **Clone o repositório**  
    ```bash
-   git clone <URL_DO_SEU_REPO>
-   cd <PASTA_DO_REPO>
+   git clone https://github.com/vinciuscastro/UFSCar-CC-So-PMD2025-Grupo3.git
+   cd UFSCar-CC-So-PMD2025-Grupo3
     ```
 
 2. **Crie o arquivo `.env` na raiz do projeto**
