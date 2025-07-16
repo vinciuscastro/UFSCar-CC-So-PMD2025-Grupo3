@@ -70,10 +70,10 @@ def get_artist_recs_by_genre(username):
         "artist": {
             "id": artist["id"],
             "name": artist["name"],
-            "bio": artist["bio"]
+            "bio": artist["bio"],
         },
         "by": {
-            "genre": most_common_genre
+            "genre": most_common_genre,
         }
     }
 
@@ -90,7 +90,7 @@ def get_release_recs_by_friends(username):
     friends_rating = neo4j.driver.execute_query(
         """
         MATCH (u:User {username: $username})-[:FRIENDS_WITH]-(friend:User)-[r:RATED]->(rel:Release)
-        WHERE r.rating > 6
+        WHERE r.rating >= 6
         RETURN friend.username AS friend_username, rel.id AS release_id, r.rating AS rating
         ORDER BY r.rating DESC
         LIMIT 10
@@ -221,8 +221,12 @@ def get_friend_recs_by_genre(username):
         {
             "_id": False,
             "username": True,
-            "name": True,
-            "bio": True
+            "name": {
+                "$ifNull": ["$name", None],
+            },
+            "bio": {
+                "$ifNull": ["$bio", None],
+            },
         }
     )
 
@@ -239,55 +243,80 @@ def get_friend_recs_by_genre(username):
 
     return jsonify(response), 200
 
-def get_friend_recs_by_reviews(user):
+def get_friend_recs_by_reviews(username):
     """
     Endpoint for getting friend recommendations by review similarity.
     """
-    friends = set(user.get("friends", []))
-
+    # Get user's highest rated releases
     reviews = neo4j.driver.execute_query(
         """
-        MATCH (u:User)-[r:RATED]->(rel:Release)
-        WHERE u.username = $username AND r.rating > 6
-        RETURN rel.id AS release_id
+        MATCH (u:User {username: $username})-[r:RATED]->(rel:Release)
+        WHERE r.rating >= 6
+        RETURN rel.id AS release_id, r.rating AS rating
         ORDER BY r.rating DESC
         """,
-        username=username
+        username = username
     )
 
     rated_releases = []
     for record in reviews.records:
-        rated_releases.append({"release_id": record["release_id"]})
+        rated_releases.append(record["release_id"])
 
     if not rated_releases:
-        return Error.NO_RATINGS_FOUND.get_response(username=username)
+        return Error.NO_RATINGS_FOUND.get_response(username = username)
 
-    releases_choosed = random.choice(rated_releases)
+    selected_release = random.choice(rated_releases)
 
     rated_reviews = neo4j.driver.execute_query(
         """
         MATCH (u:User)-[r:RATED]->(rel:Release)
         WHERE rel.id = $release_id
-        AND r.rating > 6
-        AND NOT u.username IN $friends
+        AND r.rating >= 6
+        AND NOT EXISTS {
+            MATCH (:User {username: $username})-[:FRIENDS_WITH]-(u)
+        }
         AND u.username <> $username
-        RETURN u.username AS username
+        RETURN u.username AS username, r.rating AS rating
         ORDER BY r.rating DESC
         LIMIT 10
         """,
-        release_id=releases_choosed["release_id"],
-        friends=list(friends),
+        release_id=selected_release["release_id"],
         username=username
     )
 
-    recommended_users = []
-    for record in rated_reviews.records:
-        recommended_users.append({"username": record["username"]})
+    if not rated_reviews.records:
+        return Error.NO_FRIEND_RECS_FOUND.get_response(
+            username = username,
+            release_id = selected_release["release_id"],
+        )
+
+    recommended_user = random.choice(rated_reviews.records)
+    selected_username = recommended_user["username"]
+    friend_rating = recommended_user["rating"]
+
+    user_details = mongodb.db.users.find_one(
+        {
+            "username": selected_username,
+        },
+        {
+            "_id": False,
+            "username": True,
+            "name": {
+                "$ifNull": ["$name", None],
+            },
+            "bio": {
+                "$ifNull": ["$bio", None],
+            },
+        },
+    )
+
+    if not user_details:
+        return Error.USER_NOT_FOUND.get_response(username=selected_username)
 
     release_cursor = mongodb.db.artists.aggregate([
         {
             "$match": {
-                "releases.id": releases_choosed["release_id"],
+                "releases.id": selected_release["release_id"],
             },
         },
         {
@@ -295,30 +324,33 @@ def get_friend_recs_by_reviews(user):
         },
         {
             "$match": {
-                "releases.id": releases_choosed["release_id"],
+                "releases.id": selected_release["release_id"],
             },
         },
         {
             "$project": {
                 "_id": False,
-                "release": {
-                    "id": "$releases.id",
-                    "name": "$releases.name",
-                    "artist": "$name",
-                },
-                "items": "$releases.ratings",
+                "id": "$releases.id",
+                "name": "$releases.name",
+                "artist": "$name",
             },
         },
     ])
 
     release_results = tuple(release_cursor)
-    if not release_results:
-        return Error.RELEASE_NOT_FOUND.get_response(id = releases_choosed["release_id"])
 
     response = {
-        "user": username,
-        "release": release_results[0]["release"]["name"],
-        "recommended_users": recommended_users
+        "user": {
+            "username": user_details["username"],
+            "name": user_details["name"],
+            "bio": user_details["bio"]
+        },
+        "by": {
+            "id": release_results[0]["id"],
+            "name": release_results[0]["name"],
+            "artist": release_results[0]["artist"],
+            "rating": friend_rating
+        }
     }
 
     return jsonify(response), 200
