@@ -128,18 +128,26 @@ Onde serão armazenados os dados dos usuários, artistas e lançamentos, contend
 
 ### Desenvolvimento
 Inicialmente, foi definida a modelagem dos dados no MongoDB e no Neo4j, de forma a atender aos requisitos de catálogo musical e de interação social. Em seguida, foram implementados scripts em Python que utilizam a biblioteca Spotipy para recuperar informações de artistas, álbuns e faixas diretamente da Spotify Web API. A geração automatizada de perfis de usuário e biografias foi realizada por meio das ferramentas Faker e Gemini Developer API.
+
 A API foi desenvolvida em Flask diretamente nas rotas, concentrando as operações de acesso aos bancos de dados e a lógica de negócio. As requisições são processadas nessas rotas, com o uso do PyMongo para manipulação dos documentos no MongoDB e do driver oficial do Neo4j para interações com os nós e relacionamentos no grafo. Também foram criados scripts adicionais em Python para popular o grafo com relacionamentos aleatórios entre usuários, artistas e avaliações, simulando uma rede social funcional e fornecendo dados para o sistema de recomendações.
+
 Durante esse processo de população, foi utilizado um [notebook em Python](src/population/main.ipynb) estruturado em células com passo a passo progressivo, permitindo o controle da inserção de cada entidade de forma modular. Esse notebook foi utilizado tanto para o MongoDB quanto para o Neo4j, facilitando a verificação dos dados a cada etapa. Além disso, foram utilizadas variáveis para limitar a quantidade de usuários inseridos automaticamente, evitando conflitos com os registros manuais adicionados anteriormente.
+
 O sistema de recomendações foi projetado para combinar afinidade de gêneros musicais e conexões sociais. Por meio de consultas em Cypher, foi possível identificar artistas que compartilham gêneros com os já seguidos ou avaliados positivamente, além de recomendar lançamentos apreciados por contatos próximos na rede. Um método híbrido também foi adotado, priorizando lançamentos com alta média entre os amigos e, ao mesmo tempo, sugerindo artistas com perfis similares aos gostos do usuário. As recomendações são geradas em tempo real, refletindo imediatamente novas avaliações e relações sociais.
 
 ### Dificuldades encontradas
+
 Durante a geração de biografias dos usuários, a principal limitação técnica enfrentada foi a cota diária da Gemini Developer API. Como o número de chamadas era restrito, a criação dos perfis precisou ser distribuída ao longo de vários dias, o que impactou o ritmo de populamento do sistema. Também foi necessário realizar diversos ajustes nos prompts enviados à API para obter descrições que fossem criativas e ao mesmo tempo coerentes com o contexto musical.
+
 A criação dos scripts para popular os relacionamentos no Neo4j também apresentou dificuldades. Foi preciso desenvolver uma lógica capaz de gerar conexões aleatórias entre usuários, artistas e avaliações de forma realista e equilibrada, garantindo que o grafo representasse uma rede social funcional. Esse processo exigiu várias iterações para ajustar a densidade das conexões e evitar um grafo artificialmente raso ou excessivamente denso. Além disso, a conexão com o Aura se mostrava instável, frequentemente sendo interrompida durante a execução dos scripts, o que atrapalhava a continuidade do populamento. A população em massa no Neo4j também se mostrou consideravelmente mais lenta em comparação com o MongoDB, aumentando o tempo necessário para completar a inserção de dados.
+
 Também houve bastante dificuldade na criação do script de geração automática de relacionamentos no Neo4j. A conexão com o Aura se mostrava instável e frequentemente era interrompida durante a execução, o que atrapalhava o progresso do populamento. Além disso, a população em massa no Neo4j demonstrou ser consideravelmente mais lenta do que no MongoDB, o que tornou o processo de inserção de grandes volumes de dados mais trabalhoso. Somando a isso, consultas muito profundas ou que envolviam um grande volume de nós acabavam comprometendo ainda mais a performance geral do banco. Para contornar esses problemas, foram realizadas otimizações nas consultas Cypher, aplicando limites adequados e ajustando os índices, garantindo um funcionamento mais fluido nas interações com o grafo.
 
 
 ### Conclusão
+
 O desenvolvimento resultou em uma API que integra catálogo musical, rede social e recomendações inteligentes de maneira coesa e eficiente. A aplicação permite acesso a informações atualizadas da Spotify Web API, gerenciamento de amizades, seguimento de artistas e registro de avaliações, alimentando um grafo de relacionamentos que serve de base para sugestões personalizadas.
+
 A solução demonstra que é possível combinar bancos de dados documentais e de grafos em um mesmo sistema, atendendo a diferentes tipos de consulta com eficiência. A utilização do Flask de forma direta simplifica a arquitetura e oferece uma base sólida e flexível, pronta para receber expansões como interfaces gráficas ou autenticação externa.
 
 ---
