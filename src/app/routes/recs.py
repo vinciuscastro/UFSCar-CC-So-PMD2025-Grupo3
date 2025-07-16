@@ -280,14 +280,14 @@ def get_friend_recs_by_reviews(username):
         ORDER BY r.rating DESC
         LIMIT 10
         """,
-        release_id=selected_release["release_id"],
+        release_id=selected_release,
         username=username
     )
 
     if not rated_reviews.records:
         return Error.NO_FRIEND_RECS_FOUND.get_response(
             username = username,
-            release_id = selected_release["release_id"],
+            release_id = selected_release,
         )
 
     recommended_user = random.choice(rated_reviews.records)
@@ -316,7 +316,7 @@ def get_friend_recs_by_reviews(username):
     release_cursor = mongodb.db.artists.aggregate([
         {
             "$match": {
-                "releases.id": selected_release["release_id"],
+                "releases.id": selected_release,
             },
         },
         {
@@ -324,7 +324,7 @@ def get_friend_recs_by_reviews(username):
         },
         {
             "$match": {
-                "releases.id": selected_release["release_id"],
+                "releases.id": selected_release,
             },
         },
         {
