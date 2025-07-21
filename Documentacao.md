@@ -39,6 +39,8 @@ Esta documentação tem como finalidade apresentar os endpoints disponíveis na 
    http://127.0.0.1:5000
    ```
 
+## ENDPOINTS
+
 ### 🎤 Artistas
 #### `GET /v1/artists/<artist_id>`
 **Descrição**  
