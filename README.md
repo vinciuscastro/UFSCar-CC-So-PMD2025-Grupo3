@@ -73,13 +73,17 @@ O sistema gera recomendações inteligentes: sugere novos artistas com base nas 
 ### MongoDB
 
 A escolha do MongoDB como banco de dados orientado a documentos justifica-se pela natureza semiestruturada dos dados musicais e de usuários, que apresentam atributos variáveis e opcionais. Essa flexibilidade permite acomodar campos como biografias de artistas ou usuários que podem estar ausentes em alguns registros, bem como gerenciar estruturas de tamanho variável como a lista de lançamentos de um artista, que cresce indefinidamente. Além disso, a organização em documentos concentra todos os dados relacionados a uma entidade em um único local, otimizando operações como a recuperação de todas as músicas de um artista. Essa abordagem evita percursos custosos e desnecessários em um grafo do Neo4j, por exemplo, para essa operação básica. Complementando essas características, a escalabilidade horizontal nativa do MongoDB também é essencial para o crescimento projetado do catálogo musical e da base de usuários.
+
 Abaixo de como ficou estruturado o mongoDB no projeto:
+
 ![Visualização do banco MongoDB](img/mongo.png)
 
 Usuario:
+
 ![Informações do usuario no mongoDB](img/user.png)
 
 Artista:
+
 ![Informações do usuario no mongoDB](img/artist.png)
 
 ### Neo4j
@@ -88,9 +92,11 @@ O Neo4j, um banco de dados orientado a grafos, foi selecionado para gerenciar as
 Abaixo, podemos ver como o banco de dados foi estruturado e a visualização dos dados.
 
 Informações sobre nós e relacionamentos dentro do neo4j
+
 ![Visualização do grafo Neo4j](img/neo4j.png)
 
 Visualização reduziado do grafo de relacionamentos dentro do neo4j
+
 ![Informações do banco Neo4j](img/neo4j_graph.png)
 
 ### Python
@@ -158,6 +164,7 @@ Durante esse processo de população, foi utilizado um [notebook em Python](src/
 
 O sistema de recomendações foi projetado para combinar afinidade de gêneros musicais e conexões sociais. Por meio de consultas em Cypher, foi possível identificar artistas que compartilham gêneros com os já seguidos ou avaliados positivamente, além de recomendar lançamentos apreciados por contatos próximos na rede. Um método híbrido também foi adotado, priorizando lançamentos com alta média entre os amigos e, ao mesmo tempo, sugerindo artistas com perfis similares aos gostos do usuário. As recomendações são geradas em tempo real, refletindo imediatamente novas avaliações e relações sociais.
 Por se tratar de uma API de catálogo musical, também foi desenvolvida uma documentação técnica apresentando todos os endpoints implementados. A documentação descreve detalhadamente a funcionalidade de cada rota, os parâmetros necessários, os formatos de requisição e resposta, bem como os possíveis códigos e mensagens de erro. Essa padronização visa facilitar a integração com outras aplicações e oferecer maior clareza no uso dos recursos disponibilizados pela API. 
+
 [**CLIQUE AQUI PARA VISUALIZAR A DOCUMENTAÇÃO**](Documentacao.md)
 
 ### Dificuldades encontradas

@@ -512,9 +512,117 @@ Remove a amizade entre dois usuários, tanto em MongoDB quanto em Neo4j.
 
 ### 🔁 Recomendações (Recs)
 
-> **Em desenvolvimento** 
+#### `GET /v1/recs/<username>/artists`
+**Descrição**  
+Sugere um artista baseado no gênero musical mais seguido pelo usuário.
 
-```md
+**Parâmetros de rota**  
+- `username` (string): nome do usuário.
 
+**Resposta 200 OK**  
+```json
+{
+  "artist": {
+    "id": "art123",
+    "name": "Arctic Monkeys",
+    "bio": "Banda inglesa formada em Sheffield..."
+  },
+  "by": {
+    "genre": "rock"
+  }
+}
+````
+
+**Erros possíveis**
+
+* `404 Not Found`: usuário não existe.
+* `404 Not Found`: sem dados de gênero (usuário não segue artistas).
+* `404 Not Found`: sem recomendações para o gênero.
+
+---
+
+#### `GET /v1/recs/<username>/releases/friends`
+
+**Descrição**
+Sugere um lançamento que algum amigo avaliou positivamente (nota ≥ 6).
+
+**Parâmetros de rota**
+
+* `username` (string): nome do usuário.
+
+**Resposta 200 OK**
+
+```json
+{
+  "release": {
+    "id": "rel001",
+    "name": "AM",
+    "artist": "Arctic Monkeys"
+  },
+  "by": {
+    "username": "alice",
+    "rating": 9
+  }
+}
 ```
+
+**Erros possíveis**
+
+* `404 Not Found`: usuário não existe.
+* `404 Not Found`: nenhum friend review encontrado.
+
+---
+
+#### `GET /v1/recs/<username>/friends?by=<método>`
+
+**Descrição**
+Recomenda outros usuários (amigos em potencial) com base em afinidade de gênero ou avaliações em comum.
+
+**Query parameters**
+
+* `by` (string, obrigatório):
+
+  * `genre` — sugere usuários que seguem artistas do mesmo gênero mais comum do solicitante.
+  * `reviews` — sugere usuários que avaliaram positivamente os mesmos lançamentos.
+
+**Parâmetros de rota**
+
+* `username` (string): nome do usuário.
+
+**Resposta 200 OK**
+
+```json
+// Exemplo para by=genre
+{
+  "user": {
+    "username": "bob",
+    "name": "Bob Smith",
+    "bio": "Curte indie rock"
+  },
+  "by": {
+    "genre": "indie"
+  }
+}
+
+// Exemplo para by=reviews
+{
+  "user": {
+    "username": "carol",
+    "name": "Carol Jones",
+    "bio": null
+  },
+  "by": {
+    "id": "rel002",
+    "name": "1989",
+    "artist": "Taylor Swift",
+    "rating": 8
+  }
+}
+```
+
+**Erros possíveis**
+
+* `400 Bad Request`: parâmetro `by` não informado ou inválido.
+* `404 Not Found`: usuário não existe.
+* `404 Not Found`: sem dados para recomendações (nenhum gênero, review ou friend rec encontrado).
 
