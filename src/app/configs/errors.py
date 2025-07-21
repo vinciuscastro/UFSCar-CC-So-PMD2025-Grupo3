@@ -56,13 +56,17 @@ class Error(Enum):
     }
 
     # Recommendations not found errors
-    ARTIST_RECS_BY_GENRE_NOT_FOUND = {
-        "code": "ArtistRecsByGenreNotFound",
+    ARTIST_RECS_NOT_FOUND = {
+        "code": "ArtistRecsNotFound",
         "message": (
-            "No recommendations for the user with username '{username}' "
-            "in the genre '{genre}.'"
+            "No recommendations for the user with username '{username}'."
         ),
         "status_code": 404
+    }
+    NO_FRIEND_RECS_FOUND = {
+        "code": "NoFriendRecsFound",
+        "message": "No friend recommendations found for user '{username}' in genre '{genre}'",
+        "status_code": 404,
     }
 
     # Entity already exists errors
@@ -107,11 +111,15 @@ class Error(Enum):
         "message": "No valid fields to update or remove.",
         "status_code": 422
     }
-
-    FRIENDS_NOT_FOUND = {
-        "code": "FriendsNotFound",
-        "message": "The user with username '{username}' has no friends.",
-        "status_code": 404
+    NO_QUERY_PARAMETER = {
+        "vode": "NoQueryParameter",
+        "message": "Missing required query parameter '{parameter}'.",
+        "status_code": 400,
+    }
+    INVALID_REC_METHOD = {
+        "code": "InvalidRecMethod",
+        "message": "Invalid recommendation method '{method}'.",
+        "status_code": 400,
     }
 
     NO_GENRE_DATA_FOUND = {
